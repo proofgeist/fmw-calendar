@@ -10,7 +10,6 @@
 
 # production
 /build
-/inlined
 
 # misc
 .DS_Store

@@ -1,0 +1,21 @@
+// you must include each plugins' css
+// paths prefixed with ~ signify node_modules
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/daygrid/main.css";
+@import "~@fullcalendar/timegrid/main.css";
+
+.fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0;
+}
+.demo-app-calendar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}

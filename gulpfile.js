@@ -1,8 +1,8 @@
 var inline = require("gulp-inline");
 var gulp = require("gulp");
 
-gulp.task("default", function(cb) {
-  gulp
+gulp.task("default", function() {
+  return gulp
     .src("build/index.html")
     .pipe(
       inline({
@@ -10,5 +10,4 @@ gulp.task("default", function(cb) {
       })
     )
     .pipe(gulp.dest("inlined/"));
-  cb();
 });
