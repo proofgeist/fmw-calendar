@@ -17,6 +17,9 @@ export default function(fields, records) {
       if (prop === "start") {
         value = moment(value).toDate();
       }
+      if (prop === "editable") {
+        value = value === "1" ? true : false;
+      }
       if (prop === "end") {
         value = moment(value).toDate();
       }

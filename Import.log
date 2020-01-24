@@ -8,3 +8,222 @@
 2020-01-04 08:35:00.417 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
 2020-01-04 08:35:00.418 -0800	Change Color	0	script steps imported : 2
 2020-01-04 08:35:00.418 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 15:53:47.949 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 15:53:47.951 -0800	New Script	0	script steps imported : 5
+2020-01-20 15:53:47.951 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 16:07:17.593 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 16:07:17.594 -0800	Load Widget	0	script steps imported : 2
+2020-01-20 16:07:17.594 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 16:29:57.036 -0800	FMWidgetTemplate.fmp12	0	Import operations started
+2020-01-20 16:29:57.037 -0800	FMWidgetTemplate.fmp12	0	Import of custom functions from clipboard started
+2020-01-20 16:30:42.639 -0800	FMWidgetTemplate.fmp12	0	custom functions imported : 1
+2020-01-20 16:30:42.640 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 16:30:42.697 -0800	FMWidgetTemplate.fmp12	0	Import of custom functions from clipboard started
+2020-01-20 16:30:42.709 -0800	FMWidgetTemplate.fmp12	0	Function “com.filemaker.widget.Calendar” imported as “com.filemaker.widget.Calendar 2” since a function named “com.filemaker.widget.Calendar” already exists.
+2020-01-20 16:31:29.745 -0800	FMWidgetTemplate.fmp12	0	custom functions imported : 1
+2020-01-20 16:31:29.746 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 16:31:29.779 -0800	FMWidgetTemplate.fmp12	0	Import of custom functions from clipboard started
+2020-01-20 16:31:29.793 -0800	FMWidgetTemplate.fmp12	0	Function “com.filemaker.widget.Calendar” imported as “com.filemaker.widget.Calendar 3” since a function named “com.filemaker.widget.Calendar” already exists.
+2020-01-20 16:32:17.590 -0800	FMWidgetTemplate.fmp12	0	custom functions imported : 1
+2020-01-20 16:32:17.590 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 16:33:01.139 -0800	FMWidgetTemplate.fmp12	0	Import operations committed
+2020-01-20 16:33:01.140 -0800	FMWidgetTemplate.fmp12	0	==================================================================
+2020-01-20 17:40:26.308 -0800	FMWidgetTemplate.fmp12	0	Import operations started
+2020-01-20 17:40:26.308 -0800	FMWidgetTemplate.fmp12	0	Import of tables from clipboard started
+2020-01-20 17:40:26.315 -0800	Events	0	fields imported : 9
+2020-01-20 17:40:26.315 -0800	FMWidgetTemplate.fmp12	0	tables imported : 1
+2020-01-20 17:40:26.316 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 17:40:41.852 -0800	FMWidgetTemplate.fmp12	0	Import operations committed
+2020-01-20 17:40:41.852 -0800	FMWidgetTemplate.fmp12	0	==================================================================
+2020-01-20 17:45:09.736 -0800	FMWidgetTemplate.fmp12	0	Import of scripts from clipboard started
+2020-01-20 17:45:09.738 -0800	GetData::2::Set Variable	1208	Function referred to in the calculation “SQL_SelectAsJSON (SQL_SelectFromFieldList ( List(GetFieldName(Events::Id);GetFieldName(Events::Title);GetFieldName(Events::allDay);GetFieldName(Events::Start);GetFieldName(Events::End);) ))” is missing.
+2020-01-20 17:45:09.739 -0800	GetData	0	script steps imported : 4
+2020-01-20 17:45:09.739 -0800	FMWidgetTemplate.fmp12	0	scripts imported : 1
+2020-01-20 17:45:09.739 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 17:46:20.905 -0800	FMWidgetTemplate.fmp12	0	Import operations started
+2020-01-20 17:46:20.905 -0800	FMWidgetTemplate.fmp12	0	Import of custom functions from clipboard started
+2020-01-20 17:46:20.909 -0800	FMWidgetTemplate.fmp12	0	custom functions imported : 2
+2020-01-20 17:46:20.909 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 17:46:22.411 -0800	FMWidgetTemplate.fmp12	0	Import operations committed
+2020-01-20 17:46:22.412 -0800	FMWidgetTemplate.fmp12	0	==================================================================
+2020-01-20 19:48:15.610 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 19:48:15.610 -0800	Clear Fields	0	script steps imported : 1
+2020-01-20 19:48:15.611 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:00:13.772 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:00:13.774 -0800	Config Btns	0	script steps imported : 1
+2020-01-20 20:00:13.774 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:12:07.389 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:12:07.397 -0800	Config Btns	0	script steps imported : 1
+2020-01-20 20:12:07.397 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:17:15.010 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:17:15.011 -0800	Load Map	0	script steps imported : 1
+2020-01-20 20:17:15.012 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:19:20.371 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:19:20.372 -0800	Load Map	0	script steps imported : 1
+2020-01-20 20:19:20.372 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:37:15.687 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:37:15.688 -0800	GetData	0	script steps imported : 3
+2020-01-20 20:37:15.688 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:38:39.820 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:38:39.820 -0800	GetData	0	script steps imported : 1
+2020-01-20 20:38:39.820 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-20 20:54:05.611 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-20 20:54:05.613 -0800	Load Widget	0	script steps imported : 4
+2020-01-20 20:54:05.613 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 07:26:01.139 -0800	FMWidgetTemplate.fmp12	0	Import of scripts from clipboard started
+2020-01-21 07:26:01.144 -0800	BTN: View::6::Perform Script	104	Script “Set View” missing.
+2020-01-21 07:26:01.144 -0800	BTN: View	0	script steps imported : 7
+2020-01-21 07:26:01.145 -0800	BTN: Nav::4::Perform Script	104	Script “Navigation” missing.
+2020-01-21 07:26:01.145 -0800	BTN: Nav	0	script steps imported : 5
+2020-01-21 07:26:01.146 -0800	receiveTitle	0	script steps imported : 4
+2020-01-21 07:26:01.147 -0800	FMWidgetTemplate.fmp12	0	scripts imported : 3
+2020-01-21 07:26:01.147 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 07:28:00.063 -0800	FMWidgetTemplate.fmp12	0	Import of scripts from clipboard started
+2020-01-21 07:28:00.065 -0800	Set View	0	script steps imported : 7
+2020-01-21 07:28:00.067 -0800	Navigation	0	script steps imported : 14
+2020-01-21 07:28:00.068 -0800	FMWidgetTemplate.fmp12	0	scripts imported : 2
+2020-01-21 07:28:00.068 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:19:33.605 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:19:33.606 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 10:19:33.606 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:36:44.987 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:36:44.988 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 10:36:44.988 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:41:58.377 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:41:58.378 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 10:41:58.379 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:42:09.027 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:42:09.029 -0800	HandleCalenderEvent	0	script steps imported : 2
+2020-01-21 10:42:09.029 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:57:13.381 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:57:13.382 -0800	Get Catalog Entry (Id)	0	script steps imported : 3
+2020-01-21 10:57:13.382 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 10:57:52.812 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 10:57:52.813 -0800	Load Widget	0	script steps imported : 1
+2020-01-21 10:57:52.813 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 11:19:42.832 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 11:19:42.833 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 11:19:42.833 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 11:21:23.056 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 11:21:23.057 -0800	HandleCalenderEvent	0	script steps imported : 3
+2020-01-21 11:21:23.058 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 11:22:08.417 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 11:22:08.418 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 11:22:08.418 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-21 14:19:22.462 -0800	FMWidgetTemplate.fmp12	0	Import of script steps from clipboard started
+2020-01-21 14:19:22.463 -0800	HandleCalenderEvent	0	script steps imported : 1
+2020-01-21 14:19:22.463 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-22 10:27:34.624 -0800	FMWidgetTemplate.fmp12	0	Import operations started
+2020-01-22 10:27:34.625 -0800	FMWidgetTemplate.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 10:28:27.535 -0800	FMWidgetTemplate.fmp12	0	custom functions imported : 1
+2020-01-22 10:28:27.536 -0800	FMWidgetTemplate.fmp12	0	Import completed
+2020-01-22 10:30:46.216 -0800	FMWidgetTemplate.fmp12	0	Import operations committed
+2020-01-22 10:30:46.216 -0800	FMWidgetTemplate.fmp12	0	==================================================================
+2020-01-22 14:36:27.218 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 14:36:27.222 -0800	BTN: View	0	script steps imported : 2
+2020-01-22 14:36:27.222 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 14:37:15.616 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 14:37:15.617 -0800	BTN: Nav	0	script steps imported : 2
+2020-01-22 14:37:15.617 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 14:51:26.258 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 14:51:26.259 -0800	Load Calendar ( Id )	0	script steps imported : 1
+2020-01-22 14:51:26.259 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 15:02:06.424 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 15:02:06.425 -0800	Load Config Window ( CatalogId)	0	script steps imported : 2
+2020-01-22 15:02:06.425 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 15:11:37.437 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 15:11:37.438 -0800	Config Btns	0	script steps imported : 3
+2020-01-22 15:11:37.438 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 15:15:14.087 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 15:15:14.089 -0800	Config Btns	0	script steps imported : 1
+2020-01-22 15:15:14.089 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 15:26:16.149 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 15:26:16.150 -0800	Config Btns	0	script steps imported : 1
+2020-01-22 15:26:16.150 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 15:51:11.396 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 15:51:11.398 -0800	Load Calendar ( Id )	0	script steps imported : 1
+2020-01-22 15:51:11.398 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:08:33.455 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 16:08:33.456 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 16:09:26.009 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 16:09:26.010 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:11:23.736 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 16:11:23.736 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 16:25:43.724 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 16:25:43.725 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 16:26:36.442 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 16:26:36.442 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:28:13.035 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 16:28:13.035 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 16:32:51.322 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 16:32:51.323 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 16:33:44.059 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 16:33:44.059 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:34:37.923 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 16:34:37.923 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 16:41:46.925 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 16:41:46.925 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 16:42:39.322 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 16:42:39.323 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:43:11.466 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 16:43:11.467 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 16:46:01.865 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 16:46:01.866 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 16:46:54.337 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 16:46:54.339 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 16:47:06.991 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 16:47:06.993 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 17:23:24.417 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 17:23:24.418 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 17:24:16.849 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 17:24:16.850 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 17:56:12.047 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 17:56:12.048 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 18:00:46.605 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 18:00:46.605 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 18:01:39.008 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 18:01:39.008 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 18:18:02.227 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 18:18:02.228 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 18:27:25.950 -0800	Calendar.fmp12	0	Import operations started
+2020-01-22 18:27:25.951 -0800	Calendar.fmp12	0	Import of custom functions from clipboard started
+2020-01-22 18:28:19.644 -0800	Calendar.fmp12	0	custom functions imported : 1
+2020-01-22 18:28:19.644 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 18:28:23.059 -0800	Calendar.fmp12	0	Import operations committed
+2020-01-22 18:28:23.059 -0800	Calendar.fmp12	0	==================================================================
+2020-01-22 19:43:25.977 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 19:43:25.979 -0800	Change Calendar View	0	script steps imported : 3
+2020-01-22 19:43:25.979 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 19:43:46.778 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 19:43:46.780 -0800	Calendar Navigation	0	script steps imported : 3
+2020-01-22 19:43:46.780 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 19:56:47.273 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 19:56:47.275 -0800	Handle Calender Event	0	script steps imported : 1
+2020-01-22 19:56:47.275 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 20:03:21.360 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 20:03:21.361 -0800	About	0	script steps imported : 1
+2020-01-22 20:03:21.362 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 20:19:54.684 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 20:19:54.685 -0800	New Script	0	script steps imported : 3
+2020-01-22 20:19:54.685 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 20:37:40.153 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 20:37:40.154 -0800	Show Config Window 	0	script steps imported : 1
+2020-01-22 20:37:40.154 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:40:58.935 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:40:58.937 -0800	Set Data	0	script steps imported : 3
+2020-01-22 21:40:58.937 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:41:09.236 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:41:09.236 -0800	Set Data	0	script steps imported : 1
+2020-01-22 21:41:09.237 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:42:47.149 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:42:47.150 -0800	Handle Calender Event	0	script steps imported : 1
+2020-01-22 21:42:47.150 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:46:16.762 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:46:16.762 -0800	Handle Calender Event	0	script steps imported : 1
+2020-01-22 21:46:16.763 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:46:50.210 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:46:50.210 -0800	Handle Calender Event	0	script steps imported : 1
+2020-01-22 21:46:50.211 -0800	Calendar.fmp12	0	Import completed
+2020-01-22 21:58:26.811 -0800	Calendar.fmp12	0	Import of script steps from clipboard started
+2020-01-22 21:58:26.812 -0800	Handle Calender Event	0	script steps imported : 1
+2020-01-22 21:58:26.812 -0800	Calendar.fmp12	0	Import completed
