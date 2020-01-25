@@ -1,3 +1,10 @@
+import uuidv1 from "uuid/v1";
+
+/**
+ * boot the application with the initialProps
+ * @param {function} booter
+ * @param {*} optionalDefaultProps
+ */
 export function init(booter, optionalDefaultProps = null) {
   if (window.fmw) {
     window.fmw = {};
@@ -33,4 +40,62 @@ export function init(booter, optionalDefaultProps = null) {
       booter(props);
     };
   }
+}
+
+const __FETCH_RESULTS__ = {};
+window.Fmw_Callback = (results, fetchId) => {
+  let x = __FETCH_RESULTS__[fetchId];
+  if (x === "started") {
+    try {
+      results = JSON.parse(results);
+    } catch (e) {}
+    __FETCH_RESULTS__[fetchId] = results;
+  }
+};
+
+/**
+ *
+ * @param {string} Script the name of the script to call
+ * @param {object} Data the data to pass
+ * @param {string} [EventType] an optional top level key
+ * @returns {Promise}
+ */
+export function fmFetch(Script, Data, EventType = undefined) {
+  const fetchId = uuidv1();
+  __FETCH_RESULTS__[fetchId] = "started";
+
+  const { Config, InstanceId } = window.fmw.getInitialProps();
+  const param = {
+    EventType,
+    Data,
+    Config,
+    InstanceId,
+    FetchId: fetchId,
+    Callback: "Fmw_Callback"
+  };
+
+  window.FileMaker.PerformScript(Script, JSON.stringify(param));
+
+  return new Promise((resolve, reject) => {
+    let result = __FETCH_RESULTS__[fetchId];
+
+    let int = setInterval(() => {
+      result = __FETCH_RESULTS__[fetchId];
+      if (result !== "started") {
+        clearInterval(int);
+        delete __FETCH_RESULTS__[fetchId];
+        resolve(result);
+      }
+      if (timeOut) {
+        clearInterval(int);
+        delete __FETCH_RESULTS__[fetchId];
+        reject(new Error("timeout"));
+      }
+    }, 100);
+
+    let timeOut = false;
+    setTimeout(() => {
+      timeOut = true;
+    }, 5000);
+  });
 }

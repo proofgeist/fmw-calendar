@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -6,91 +6,68 @@ import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClic
 import moment from "moment";
 import momentPlugin from "@fullcalendar/moment";
 import bootstrapPlugin from "@fullcalendar/bootstrap";
+import {
+  transformEvent,
+  newEventFetcher,
+  dispatchEventToFm
+} from "./eventUtils";
 
 import "./main.scss";
 
-export default function Calendar({ defaultView, events }) {
-  const [state, setState] = useState(events);
-
-  useEffect(() => {
-    const calendar = getCalendarObj();
-    callBack(calendar.view);
-  }, [defaultView]);
+export default function Calendar({ config }) {
+  const { defaultView } = config;
+  const fetchEvents = newEventFetcher(config);
 
   const calendarComponentRef = useRef();
   const getCalendarObj = () => {
     return calendarComponentRef.current.calendar;
   };
 
-  function callBack() {
-    const { Config } = window.fmw.getInitialProps();
-    const { FieldNames, CalendarTable } = Config;
+  //run on mount
+  useEffect(sendViewStateToFM, []);
+
+  function sendViewStateToFM() {
     const calendar = getCalendarObj();
     const calendarView = calendar.view;
-
-    const activeStart =
-      moment(calendarView.activeStart).format("L") + " 00:00:00";
-    const activeEnd =
-      moment(calendarView.activeEnd)
-        .add(1, "days")
-        .format("L") + " 00:00:00";
-
-    let fieldArray = FieldNames.split("\r");
-
-    fieldArray = fieldArray.map(field => {
-      const split = field.split("::");
-
-      return `"${split[0]}"."${split[1]}"`;
-    });
-
-    const fieldSelect = fieldArray.join(", ");
 
     const obj = {
       title: calendarView.title,
       type: calendarView.type,
-      activeStart: activeStart,
-      activeEnd: activeEnd,
+      activeStart: calendarView.activeStart,
+      activeEnd: calendarView.activeEnd,
       currentStart: calendarView.currentStart,
       currentEnd: calendarView.currentEnd,
-      currentDate: calendar.state.currentDate,
-      sql: `SELECT ${fieldSelect} from ${CalendarTable} where "Start" >= '${activeStart}' AND "End" < '${activeEnd}'`
+      currentDate: calendar.state.currentDate
     };
 
-    dispatchEventToFm("TitleChanged", obj);
+    dispatchEventToFm("ViewStateChanged", obj);
   }
 
-  function dispatchEventToFm(EventType, Data) {
-    const { Config, InstanceId } = window.fmw.getInitialProps();
-    const param = { EventType, Data, Config, InstanceId };
-    window.FileMaker.PerformScript(
-      "Handle Calender Event",
-      JSON.stringify(param)
-    );
-  }
+  window.Calendar_Refresh = () => {
+    const calendar = getCalendarObj();
+    calendar.refetchEvents();
+  };
 
   window.calendar = {
-    setEvents: events => {
-      setState(events);
-    },
     setView: view => {
       const calendar = getCalendarObj();
       calendar.changeView(view);
-      callBack(calendar.view);
+      sendViewStateToFM();
     },
     next: () => {
       const calendar = getCalendarObj();
       calendar.next();
-      callBack(calendar.view);
+      sendViewStateToFM();
     },
     prev: () => {
       const calendar = getCalendarObj();
       calendar.prev();
-      callBack(calendar.view);
+      sendViewStateToFM();
     },
     today: () => {
       const calendar = getCalendarObj();
       calendar.today();
-      callBack(calendar.view);
+      sendViewStateToFM();
     }
   };
 
@@ -98,6 +75,7 @@ export default function Calendar({ defaultView, events }) {
     <div className="demo-app">
       <div className="demo-app-calendar">
         <FullCalendar
+          eventDataTransform={transformEvent}
           defaultView={defaultView}
           plugins={[
             dayGridPlugin,
@@ -108,14 +86,8 @@ export default function Calendar({ defaultView, events }) {
           ]}
           header={{ left: "", center: "", right: "" }}
           ref={calendarComponentRef}
-          events={(fetchInfo, successCallback, failureCallback) => {
-            console.log(fetchInfo, successCallback, failureCallback);
-          }}
+          events={fetchEvents}
           dateClick={date => {
-            const calendar = getCalendarObj();
-
-            console.log("plpp", calendar.refetchEvents());
-
             dispatchEventToFm("DateClick", { date: date.dateStr });
           }}
           eventClick={event => {
@@ -152,15 +124,3 @@ export default function Calendar({ defaultView, events }) {
 Calendar.defaultProps = {
   defaultView: "timeGridWeek"
 };
-
-function getNewTimes(event) {
-  console.log(event, event.event.start);
-
-  const oldEvent = event.oldEvent;
-  const oldStart = oldEvent.start;
-  const delta = event.delta;
-  //calc new Format in the FM format for this local
-  const newStartTimeStamp = moment(oldStart)
-    .add(delta)
-    .format("L LTS");
-}

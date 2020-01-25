@@ -1,25 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import FullCalendar from "./components/FullCalendar";
 
-import mergeFieldsAndRecords from "./utils/mergeFieldsAndRecords";
-
 function Widget(initialProps) {
-  const [events, setEvents] = useState([]);
-
   window.Calendar_SetEvents = events => {
-    setEvents(JSON.parse(events));
+    // console.log(events);
   };
-
-  const eventObjs = mergeFieldsAndRecords(
-    ["id", "title", "editable", "start", "end", "allDay"],
-    events
-  );
 
   return (
     <>
-      <FullCalendar events={eventObjs} {...initialProps} />
+      <FullCalendar config={{}} {...initialProps} />
     </>
   );
 }
 
 export default Widget;
+
+//<FullCalendar events={eventObjs} {...initialProps} />
