@@ -1,0 +1,93 @@
+{
+  "EventDetailLayout": {
+    "category": "General Options",
+    "help": "Select the layout that displays your events",
+    "label": "Event Detail Layout",
+    "sort": 1,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "reScanOnChange": true,
+    "fmSchema": { "type": "Layout" }
+  },
+  "CalendarStyle": {
+    "category": "General Options",
+    "help": "Choose the default style for all events",
+    "label": "Default Calendar Style",
+    "sort": 9,
+    "type": "select",
+    "options": "",
+    "value": ""
+  },
+  "EventPrimaryKeyField": {
+    "category": "General Options",
+    "help": "Choose the Primary Key Field for you event",
+    "label": "Primary Key Field",
+    "sort": 2,
+    "type": "select",
+    "options": "",
+    "value": ""
+  },
+
+  "EventTitleField": {
+    "category": "General Options",
+    "help": "Choose the field that contains your Event title",
+    "label": "Event Title",
+    "sort": 3,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchemaType": { "type": "Field", "FieldType": "Text" }
+  },
+  "EventStartField": {
+    "category": "General Options",
+    "help": "Choose the field that contains your Event title",
+    "label": "Event Start TimeStamp",
+    "sort": 4,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchemaType": { "type": "Field", "FieldType": "TimeStamp" }
+  },
+  "EventEndField": {
+    "category": "General Options",
+    "help": "Choose the field that contains the event End Time Stamp",
+    "label": "Event End Timestamp",
+    "sort": 5,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchemaType": { "type": "Field", "FieldType": "TimeStamp" }
+  },
+  "EventAllDayField": {
+    "category": "General Options",
+    "help": "Choose the field that contains your Event title",
+    "label": "Event All Day Field",
+    "sort": 6,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchemaType": { "type": "Field", "FieldType": "Number" }
+  },
+  "EventEditableField": {
+    "category": "General Options",
+    "help": "Choose the field that determines if this event is editable",
+    "label": "Event Editable",
+    "sort": 7,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchemaType": { "type": "Field", "FieldType": "Number" }
+  },
+
+  "MyColor": {
+    "category": "General Options",
+    "help": "Choose the field that determines if this event is editable",
+    "label": "Mycolor",
+    "sort": 0,
+    "type": "color",
+    "options": "",
+    "value": "#003300",
+    "default": "#003300"
+  }
+}

@@ -3,7 +3,6 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
-import moment from "moment";
 import momentPlugin from "@fullcalendar/moment";
 import bootstrapPlugin from "@fullcalendar/bootstrap";
 import {
@@ -11,7 +10,7 @@ import {
   newEventFetcher,
   dispatchEventToFm
 } from "./eventUtils";
-
+import { eventRender, handleEventDrop, handleEventResize } from "./events";
 import "./main.scss";
 
 export default function Calendar({ config }) {
@@ -48,33 +47,34 @@ export default function Calendar({ config }) {
     calendar.refetchEvents();
   };
 
-  window.calendar = {
-    setView: view => {
-      const calendar = getCalendarObj();
-      calendar.changeView(view);
-      sendViewStateToFM();
-    },
-    next: () => {
-      const calendar = getCalendarObj();
-      calendar.next();
-      sendViewStateToFM();
-    },
-    prev: () => {
-      const calendar = getCalendarObj();
-      calendar.prev();
-      sendViewStateToFM();
-    },
-    today: () => {
-      const calendar = getCalendarObj();
-      calendar.today();
-      sendViewStateToFM();
-    }
+  window.Calendar_SetView = view => {
+    const calendar = getCalendarObj();
+    calendar.changeView(view);
+    sendViewStateToFM();
+  };
+
+  window.Calendar_Next = () => {
+    const calendar = getCalendarObj();
+    calendar.next();
+    sendViewStateToFM();
+  };
+  window.Calendar_Prev = () => {
+    const calendar = getCalendarObj();
+    calendar.prev();
+    sendViewStateToFM();
+  };
+
+  window.Calendar_Today = () => {
+    const calendar = getCalendarObj();
+    calendar.today();
+    sendViewStateToFM();
   };
 
   return (
     <div className="demo-app">
       <div className="demo-app-calendar">
         <FullCalendar
+          nowIndicator={true}
           eventDataTransform={transformEvent}
           defaultView={defaultView}
           plugins={[
@@ -90,28 +90,9 @@ export default function Calendar({ config }) {
           dateClick={date => {
             dispatchEventToFm("DateClick", { date: date.dateStr });
           }}
-          eventClick={event => {
-            dispatchEventToFm("EventClick", { id: event.event.id });
-          }}
-          eventResize={({ event }) => {
-            const { id, end } = event;
-            const newEndTimeStamp = moment(end).format("L LTS");
-            dispatchEventToFm("EventResized", { id, newEndTimeStamp });
-          }}
-          eventDrop={event => {
-            const oldEvent = event.oldEvent;
-            const oldStart = oldEvent.start;
-            const delta = event.delta;
-            //calc new Format in the FM format for this local
-            const newStartTimeStamp = moment(oldStart)
-              .add(delta)
-              .format("L LTS");
-
-            dispatchEventToFm("EventDropped", {
-              newStartTimeStamp,
-              id: event.event.id
-            });
-          }}
+          eventRender={eventRender}
+          eventResize={handleEventResize}
+          eventDrop={handleEventDrop}
           style={{ borderRadius: "10px" }}
           editable={true}
           themeSystem="bootstrap"

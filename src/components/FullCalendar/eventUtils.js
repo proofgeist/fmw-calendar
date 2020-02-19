@@ -1,5 +1,22 @@
 import moment from "moment";
-import { fmFetch } from "../../utils/fmw";
+import { fmFetch, fmCallScript } from "fmw-utils";
+
+const PROPERTIES = ["id", "title", "editable", "start", "end", "allDay"];
+
+export function getConfig(prop) {
+  const { Config } = window.fmw.getInitialProps();
+  return Config[prop];
+}
+
+export function getFMFieldName(propName) {
+  const FieldNames = getConfig("FieldNames");
+  const FieldNamesArray = FieldNames.split("\r");
+
+  let i = PROPERTIES.findIndex(el => {
+    return el === propName;
+  });
+  return FieldNamesArray[i];
+}
 
 /**
  * fetch events from FileMaker
@@ -17,7 +34,15 @@ export function fetchEvents(fetchInfo) {
       .format("L") + " 00:00:00";
   const sql = `${select} WHERE ${startField} >= '${startStr}' AND ${endField} < '${endStr}'`;
 
-  return fmFetch("Handle Calender Event", { sql, start, end }, "GetData");
+  return fmFetch(
+    "Handle Calender Event",
+    {
+      sql,
+      start,
+      end
+    },
+    { eventType: "GetData" }
+  );
 }
 
 export function newEventFetcher() {
@@ -54,7 +79,7 @@ function createFieldSelect() {
  * @param {array} eventArray an array of values for the event
  */
 export function transformEvent(eventArray) {
-  const fields = ["id", "title", "editable", "start", "end", "allDay"];
+  const fields = PROPERTIES;
   const obj = {};
   eventArray.forEach((value, i) => {
     const prop = fields[i];
@@ -75,12 +100,10 @@ export function transformEvent(eventArray) {
   return obj;
 }
 
-export function dispatchEventToFm(EventType, Data) {
-  const { Config, InstanceId } = window.fmw.getInitialProps();
-  const param = { EventType, Data, Config, InstanceId };
+export function dispatchEventToFm(EventType, data) {
+  const options = {
+    eventType: EventType
+  };
 
-  window.FileMaker.PerformScript(
-    "Handle Calender Event",
-    JSON.stringify(param)
-  );
+  fmCallScript("Handle Calender Event", data, options);
 }

@@ -1,4 +1,0 @@
-﻿Timestamp	Filename	Error	Message
-2020-01-23 21:34:47.821 -0800	Calendar.fmp12	0	*** Started consistency check of improperly closed file, total of 654 block(s) to check
-2020-01-23 21:34:47.825 -0800	Calendar.fmp12	0	Reset maximum block sequence number to 1033058
-2020-01-23 21:34:47.825 -0800	Calendar.fmp12	0	*** Completed consistency check, checked 654 block(s)

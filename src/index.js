@@ -2,10 +2,10 @@ import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
-import { init } from "./utils/fmw";
+import { init } from "fmw-utils";
 
 import "./bootstrap.min.css";
-//import "./index.css";
+import "./index.css";
 import Widget from "./Widget";
 
 function BootWidget(props) {
