@@ -19,7 +19,7 @@ import "react-day-picker/lib/style.css";
 // implement react color picker
 // implement date pickers
 
-function Configrator({ Config, AddonUUID, headerText, topWidth }) {
+function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
   const [initialProps, setInitialProps] = useState({ fields: Config });
   const { fields } = initialProps;
 
@@ -27,7 +27,15 @@ function Configrator({ Config, AddonUUID, headerText, topWidth }) {
   const onSubmit = data => {
     //console.log("ON SUBMIT...", data, form);
     let finalObject = Object.assign({}, data, form);
-    console.log("SUBMIT FINAL OBJECT", finalObject);
+
+    const config = JSON.parse(JSON.stringify(fields));
+    //add current form state back to config
+    Object.keys(config).forEach(key => {
+      config[key].value = finalObject[key];
+    });
+
+    console.log("SUBMIT FINAL OBJECT", config);
+    saveToFM(config);
   };
   const [form, setState] = useState(buildInitStateObject(fields));
 
@@ -43,14 +51,7 @@ function Configrator({ Config, AddonUUID, headerText, topWidth }) {
       config[key].value = currentData[key];
     });
 
-    console.log("oldConfig", config);
-
-    const newConfig = await fmFetch("FCCalendarSchema", {
-      AddonUUID,
-      Config: config
-    });
-
-    console.log("NEWCONFIG", newConfig);
+    const newConfig = await fmFetch("FCCalendarSchema", {});
 
     setInitialProps({ fields: newConfig });
 

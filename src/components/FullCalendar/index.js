@@ -13,9 +13,9 @@ import {
 import { eventRender, handleEventDrop, handleEventResize } from "./events";
 import "./main.scss";
 
-export default function Calendar({ config }) {
-  const { defaultView } = config;
-  const fetchEvents = newEventFetcher(config);
+export default function Calendar({ AddonUUID, Meta, Config }) {
+  const { defaultView } = Config;
+  const fetchEvents = newEventFetcher(Config);
 
   const calendarComponentRef = useRef();
   const getCalendarObj = () => {

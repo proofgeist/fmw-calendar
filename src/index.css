@@ -18,8 +18,8 @@ body {
 }
 
 .helpText {
-  font-size: 10px;
-  color: #888;
+  font-size: 11px;
+  color: rgb(108, 108, 108);
 }
 
 .submitButton {
@@ -65,7 +65,8 @@ body {
 }
 
 .menuHeader {
-  font-size: 14px;
+  font-size: 18px;
+  font-style: bold;
   text-align: center;
   padding: 10px;
   box-sizing: border-box;

@@ -3,10 +3,17 @@ import FullCalendar from "./components/FullCalendar";
 import defaultConfig from "./configuration.json";
 import Configurator from "./components/Configurator";
 import Modal from "react-modal";
+import { fmFetch } from "fmw-utils";
+
+import { useFMPerformJS } from "fmw-react-hooks";
 
 function Widget(initialProps) {
+  const showConfig = useFMPerformJS(
+    !initialProps.AddonUUID,
+    "Calendar_ShowConfig"
+  );
   //if there is no config this is wrong right now but will deal later
-  if (!initialProps.Config.FieldNames) {
+  if (showConfig) {
     const data = { Config: defaultConfig, AddonUUID: initialProps.AddonUUID };
 
     return (
@@ -21,7 +28,7 @@ function Widget(initialProps) {
 
   return (
     <>
-      <FullCalendar config={{}} {...initialProps} />
+      <FullCalendar {...initialProps} />
     </>
   );
 }
@@ -53,9 +60,18 @@ const customStyles = {
 function CalendarConfigurator({ startOpen, ...initialProps }) {
   const [isOpen, setIsOpen] = useState(startOpen);
 
+  window.Calendar_ShowConfig = show => {
+    setIsOpen(show);
+  };
+
+  const handleSubmit = async data => {
+    const result = await fmFetch("FCSaveConfig", data);
+    setIsOpen(false);
+  };
+
   return (
     <Modal style={customStyles} isOpen={isOpen}>
-      <Configurator {...initialProps}></Configurator>
+      <Configurator saveToFM={handleSubmit} {...initialProps}></Configurator>
     </Modal>
   );
 }

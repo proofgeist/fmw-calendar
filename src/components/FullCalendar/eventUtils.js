@@ -1,22 +1,11 @@
 import moment from "moment";
-import { fmFetch, fmCallScript } from "fmw-utils";
+import { fmCallScript, getFMFieldName, getConfigs } from "fmw-utils";
+import { findRecords } from "../../api";
 
-const PROPERTIES = ["id", "title", "editable", "start", "end", "allDay"];
-
-export function getConfig(prop) {
-  const { Config } = window.fmw.getInitialProps();
-  return Config[prop];
-}
-
-export function getFMFieldName(propName) {
-  const FieldNames = getConfig("FieldNames");
-  const FieldNamesArray = FieldNames.split("\r");
-
-  let i = PROPERTIES.findIndex(el => {
-    return el === propName;
-  });
-  return FieldNamesArray[i];
-}
+/**
+ * TODO move to new file
+ * @param {} request
+ */
 
 /**
  * fetch events from FileMaker
@@ -24,86 +13,58 @@ export function getFMFieldName(propName) {
  * @param {Date} fetchInfo.start the start from search date
  * @param {Date} fetchInfo.end the end from search date
  */
-export function fetchEvents(fetchInfo) {
-  const { select, startField, endField } = createFieldSelect();
+export async function fetchEvents(fetchInfo, Config) {
   const { start, end } = fetchInfo;
-  const startStr = moment(start).format("L") + " 00:00:00";
-  const endStr =
-    moment(end)
-      .add(1, "days")
-      .format("L") + " 00:00:00";
-  const sql = `${select} WHERE ${startField} >= '${startStr}' AND ${endField} < '${endStr}'`;
+  const startStr = moment(start)
+    .subtract(1, "month")
+    .format("L");
+  const endStr = moment(end)
+    .add(1, "month")
+    .format("L");
 
-  return fmFetch(
-    "Handle Calender Event",
-    {
-      sql,
-      start,
-      end
-    },
-    { eventType: "GetData" }
-  );
-}
+  const startFieldName = getFMFieldName("EventStartField");
+  const endFieldName = getFMFieldName("EventEndField");
 
-export function newEventFetcher() {
-  return fetchInfo => fetchEvents(fetchInfo);
-}
-
-function createFieldSelect() {
-  function quoteField(field) {
-    const split = field.split("::");
-    return `"${split[0]}"."${split[1]}"`;
-  }
-
-  const { Config } = window.fmw.getInitialProps();
-  const { FieldNames, CalendarTable } = Config;
-  let fieldArray = FieldNames.split("\r");
-
-  let fieldSelectArray = fieldArray.map(field => {
-    return quoteField(field);
-  });
-
-  const startField = quoteField(fieldArray[3]);
-  const endField = quoteField(fieldArray[4]);
-
-  const fieldSelect = fieldSelectArray.join(", ");
-  return {
-    select: `SELECT ${fieldSelect} FROM ${CalendarTable}`,
-    startField,
-    endField
+  const request = {
+    layouts: Config.EventDetailLayout.value,
+    query: [
+      { [startFieldName]: `>=${startStr}`, [endFieldName]: `<${endStr}` }
+    ],
+    limit: 300
   };
+  const response = await findRecords(request);
+  return response.data;
+}
+
+export function newEventFetcher(Config) {
+  return fetchInfo => fetchEvents(fetchInfo, Config);
 }
 
 /**
  * fullcalendar event fetcher
- * @param {array} eventArray an array of values for the event
+ * @param {array} fmEventRecord an the fmRecordObject for the event
  */
-export function transformEvent(eventArray) {
-  const fields = PROPERTIES;
-  const obj = {};
-  eventArray.forEach((value, i) => {
-    const prop = fields[i];
-    if (prop === "allDay") {
-      value = value !== "1" ? false : true;
-    }
-    if (prop === "start") {
-      value = moment(value).toDate();
-    }
-    if (prop === "editable") {
-      value = value === "1" ? true : false;
-    }
-    if (prop === "end") {
-      value = moment(value).toDate();
-    }
-    obj[prop] = value;
-  });
-  return obj;
+export function transformEvent(fmEventRecord) {
+  const fieldData = fmEventRecord.fieldData;
+  const id = fieldData[getFMFieldName("EventPrimaryKeyField")];
+  const title = fieldData[getFMFieldName("EventTitleField")];
+  let start = fieldData[getFMFieldName("EventStartField")];
+  start = moment(start).toDate();
+  let end = fieldData[getFMFieldName("EventEndField")];
+  end = moment(end).toDate();
+  let allDay = fieldData[getFMFieldName("EventAllDayField")];
+  allDay = allDay ? 1 : 0;
+  let editable = fieldData[getFMFieldName("EventEditableField")];
+  editable = editable ? 1 : 0;
+  const event = { id, start, title, end, allDay, editable };
+  return event;
 }
 
 export function dispatchEventToFm(EventType, data) {
   const options = {
     eventType: EventType
   };
-
   fmCallScript("Handle Calender Event", data, options);
 }
+
+export const getConfig = () => {};

@@ -1,9 +1,10 @@
-import { dispatchEventToFm, getFMFieldName, getConfig } from "./eventUtils";
+import { dispatchEventToFm } from "./eventUtils";
+import { getConfig } from "fmw-utils";
 import moment from "moment";
 
 const handleDoubleClick = event => {
-  const idFieldName = getFMFieldName("id");
-  const eventDisplayLayout = getConfig("CalendarEventLayout");
+  const idFieldName = getConfig("EventPrimaryKeyField");
+  const eventDisplayLayout = getConfig("EventDetailLayout");
 
   dispatchEventToFm("EventClick", {
     id: event.event.id,
@@ -21,10 +22,10 @@ export const eventRender = event => {
 
 export const handleEventResize = ({ event }) => {
   const { id, end } = event;
-  const endFieldName = getFMFieldName("end");
-  const idFieldName = getFMFieldName("id");
+  const endFieldName = getConfig("EventEndField");
+  const idFieldName = getConfig("EventPrimaryKeyField");
   const newEndTimeStamp = moment(end).format("L LTS");
-  const eventDisplayLayout = getConfig("CalendarEventLayout");
+  const eventDisplayLayout = getConfig("EventDetailLayout");
   dispatchEventToFm("EventResized", {
     id,
     newEndTimeStamp,
@@ -39,10 +40,10 @@ export const handleEventDrop = event => {
   const oldStart = oldEvent.start;
   const oldEnd = oldEvent.end;
   const delta = event.delta;
-  const idFieldName = getFMFieldName("id");
-  const startFieldName = getFMFieldName("start");
-  const endFieldName = getFMFieldName("end");
-  const eventDisplayLayout = getConfig("CalendarEventLayout");
+  const idFieldName = getConfig("EventPrimaryKeyField");
+  const startFieldName = getConfig("EventStartField");
+  const endFieldName = getConfig("EventEndField");
+  const eventDisplayLayout = getConfig("EventDetailLayout");
   //calc new Format in the FM format for this local
   const newStartTimeStamp = moment(oldStart)
     .add(delta)
