@@ -64,7 +64,7 @@ export function dispatchEventToFm(EventType, data) {
   const options = {
     eventType: EventType
   };
-  fmCallScript("Handle Calender Event", data, options);
+  fmCallScript("FCCalenderEvents", data, options);
 }
 
 export const getConfig = () => {};

@@ -8,26 +8,28 @@ import { fmFetch } from "fmw-utils";
 import { useFMPerformJS } from "fmw-react-hooks";
 
 function Widget(initialProps) {
-  const showConfig = useFMPerformJS(
-    !initialProps.AddonUUID,
-    "Calendar_ShowConfig"
-  );
-  //if there is no config this is wrong right now but will deal later
-  if (showConfig) {
-    const data = { Config: defaultConfig, AddonUUID: initialProps.AddonUUID };
+  const noConfig = !initialProps.Config.EventPrimaryKeyField;
 
-    return (
-      <CalendarConfigurator
-        headerText="Calendar Configurator"
-        topWidth="400px"
-        startOpen={true}
-        {...data}
-      />
-    );
+  const showConfigurator = useFMPerformJS(noConfig, "Calendar_ShowConfig");
+  //if there is no config this is wrong right now but will deal later
+
+  let data;
+  if (noConfig) {
+    data = { Config: defaultConfig, AddonUUID: initialProps.AddonUUID };
+    //  we need an override for no CONFIG
+    window.__initialProps__ = data;
+  } else {
+    data = initialProps;
   }
 
   return (
     <>
+      <CalendarConfigurator
+        headerText="Calendar Configurator"
+        topWidth="400px"
+        startOpen={showConfigurator}
+        {...data}
+      />
       <FullCalendar {...initialProps} />
     </>
   );
@@ -69,9 +71,17 @@ function CalendarConfigurator({ startOpen, ...initialProps }) {
     setIsOpen(false);
   };
 
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Modal style={customStyles} isOpen={isOpen}>
-      <Configurator saveToFM={handleSubmit} {...initialProps}></Configurator>
+      <Configurator
+        onCancelConfigurator={handleCancel}
+        saveToFM={handleSubmit}
+        {...initialProps}
+      ></Configurator>
     </Modal>
   );
 }

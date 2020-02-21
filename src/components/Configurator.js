@@ -19,7 +19,14 @@ import "react-day-picker/lib/style.css";
 // implement react color picker
 // implement date pickers
 
-function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
+function Configrator({
+  Config,
+  AddonUUID,
+  headerText,
+  topWidth,
+  saveToFM,
+  onCancelConfigurator
+}) {
   const [initialProps, setInitialProps] = useState({ fields: Config });
   const { fields } = initialProps;
 
@@ -34,7 +41,6 @@ function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
       config[key].value = finalObject[key];
     });
 
-    console.log("SUBMIT FINAL OBJECT", config);
     saveToFM(config);
   };
   const [form, setState] = useState(buildInitStateObject(fields));
@@ -44,6 +50,7 @@ function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
    */
   async function scanSchema() {
     const currentData = getValues();
+
     //clone
     const config = JSON.parse(JSON.stringify(fields));
     //add current form state back to config
@@ -51,11 +58,13 @@ function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
       config[key].value = currentData[key];
     });
 
-    const newConfig = await fmFetch("FCCalendarSchema", {});
+    console.log("CUURENT", config);
+
+    const newConfig = await fmFetch("FCCalendarSchema", config);
+
+    console.log("ccomback", newConfig);
 
     setInitialProps({ fields: newConfig });
-
-    return;
   }
 
   useEffect(() => {
@@ -307,6 +316,7 @@ function Configrator({ Config, AddonUUID, headerText, topWidth, saveToFM }) {
             <div className="formRow">
               <input className={"submitButton"} type="submit" value="Save" />
             </div>
+            <div onClick={onCancelConfigurator}>cancel</div>
           </form>
         </div>
       </div>

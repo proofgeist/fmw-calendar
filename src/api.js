@@ -11,9 +11,7 @@ import { fmFetch } from "fmw-utils";
  * @param {Number} [request.limit] for paging
  */
 export const findRecords = request => {
-  return fmFetch("FC Calendar Find", request).then(result => {
-    console.log("XXX", result);
-
+  return fmFetch("FCCalendarFind", request).then(result => {
     return responseParse(result);
   });
 };
