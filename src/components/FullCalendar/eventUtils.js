@@ -1,5 +1,5 @@
 import moment from "moment";
-import { fmCallScript, getFMFieldName, getConfigs } from "fmw-utils";
+import { fmCallScript, getFMFieldName } from "fmw-utils";
 import { findRecords } from "../../api";
 
 /**
