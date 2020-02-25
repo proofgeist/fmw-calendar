@@ -1,6 +1,7 @@
 import moment from "moment";
 import { fmCallScript, getFMFieldName } from "fmw-utils";
 import { findRecords } from "../../api";
+import theme from "./event.themes";
 
 /**
  * TODO move to new file
@@ -33,6 +34,7 @@ export async function fetchEvents(fetchInfo, Config) {
     limit: 300
   };
   const response = await findRecords(request);
+
   return response.data;
 }
 
@@ -56,7 +58,13 @@ export function transformEvent(fmEventRecord) {
   allDay = allDay ? 1 : 0;
   let editable = fieldData[getFMFieldName("EventEditableField")];
   editable = editable ? 1 : 0;
-  const event = { id, start, title, end, allDay, editable };
+
+  let eventStyle = fieldData[getFMFieldName("EventStyleField")];
+
+  eventStyle = eventStyle ? theme(eventStyle) : null;
+
+  const event = { id, start, title, end, allDay, editable, ...eventStyle };
+
   return event;
 }
 

@@ -11,6 +11,7 @@ import {
   dispatchEventToFm
 } from "./eventUtils";
 import { eventRender, handleEventDrop, handleEventResize } from "./events";
+import theme from "./event.themes";
 import "./main.scss";
 
 export default function Calendar({ AddonUUID, Meta, Config }) {
@@ -44,6 +45,8 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
 
   window.Calendar_Refresh = () => {
     const calendar = getCalendarObj();
+    console.log("refresh");
+
     calendar.refetchEvents();
   };
 
@@ -70,6 +73,8 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
     sendViewStateToFM();
   };
 
+  const styles = theme(Config.CalendarStyle.value);
+
   return (
     <div className="demo-app">
       <div className="demo-app-calendar">
@@ -86,10 +91,18 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
           ]}
           header={{ left: "", center: "", right: "" }}
           ref={calendarComponentRef}
-          events={fetchEvents}
+          eventSources={[
+            {
+              events: fetchEvents,
+              ...styles
+            }
+          ]}
           dateClick={date => {
             dispatchEventToFm("DateClick", { date: date.dateStr });
           }}
+          eventBackgroundColor="#E7F5FA"
+          eventTextColor="#00425E"
+          eventBorderColor="#B9E1F1"
           eventRender={eventRender}
           eventResize={handleEventResize}
           eventDrop={handleEventDrop}

@@ -10,14 +10,15 @@
     "reScanOnChange": true,
     "fmSchema": { "type": "Layout" }
   },
-  "CalendarStyle": {
+  "DefaultEventStyle": {
     "category": "General Options",
     "help": "Choose the default style for all events",
-    "label": "Default Calendar Style",
+    "label": "Default Event Style",
     "sort": 9,
     "type": "select",
     "options": "",
-    "value": ""
+    "value": "",
+    "fmSchema": { "type": "ValueList" }
   },
   "EventPrimaryKeyField": {
     "category": "General Options",
@@ -37,7 +38,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchemaType": { "type": "Field", "FieldType": "Text" }
+    "fmSchema": { "type": "Field", "FieldType": "Text" }
   },
   "EventStartField": {
     "category": "General Options",
@@ -47,7 +48,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchemaType": { "type": "Field", "FieldType": "TimeStamp" }
+    "fmSchema": { "type": "Field", "FieldType": "TimeStamp" }
   },
   "EventEndField": {
     "category": "General Options",
@@ -57,7 +58,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchemaType": { "type": "Field", "FieldType": "TimeStamp" }
+    "fmSchema": { "type": "Field", "FieldType": "TimeStamp" }
   },
   "EventAllDayField": {
     "category": "General Options",
@@ -67,7 +68,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchemaType": { "type": "Field", "FieldType": "Number" }
+    "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
   "EventEditableField": {
     "category": "General Options",
@@ -77,17 +78,16 @@
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchemaType": { "type": "Field", "FieldType": "Number" }
+    "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
-
-  "MyColor": {
+  "EventStyleField": {
     "category": "General Options",
     "help": "Choose the field that determines if this event is editable",
-    "label": "Mycolor",
-    "sort": 0,
-    "type": "color",
+    "label": "Event Style",
+    "sort": 7,
+    "type": "select",
     "options": "",
-    "value": "#003300",
-    "default": "#003300"
+    "value": "",
+    "fmSchema": { "type": "Field", "FieldType": "String" }
   }
 }

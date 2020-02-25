@@ -19,26 +19,24 @@ hr.fc-divider {
   bottom: 0;
 }
 
+.alert-info {
+  background-color: #f8fdff;
+}
+
 html,
 body {
   overflow: hidden;
 }
 
-a.fc-event {
-  background-color: #0091ce;
-  color: white;
-  border-color: #0079a5;
-}
-
-div.fc-content {
-  background-color: #0091ce;
-  color: white;
-  border-color: #0079a5;
-}
-
 th.fc-day-header {
-  background-color: #0091ce;
-  color: white;
+  background-color: #f5f5f5;
+  color: #b3b3b3;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-top: 10px;
+
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif" !important;
 }
 
 td.fc-axis {

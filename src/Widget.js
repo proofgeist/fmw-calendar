@@ -28,7 +28,7 @@ function FCCalendar(initialProps) {
         startOpen={showConfigurator}
         {...data}
       />
-      <FullCalendar {...initialProps} />
+      {noConfig ? null : <FullCalendar {...initialProps} />}
     </>
   );
 }
