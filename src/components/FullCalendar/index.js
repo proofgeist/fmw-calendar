@@ -73,7 +73,7 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
     sendViewStateToFM();
   };
 
-  const styles = theme(Config.CalendarStyle.value);
+  const styles = theme(Config.DefaultEventStyle.value);
 
   return (
     <div className="demo-app">

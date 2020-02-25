@@ -59,11 +59,10 @@ export function transformEvent(fmEventRecord) {
   let editable = fieldData[getFMFieldName("EventEditableField")];
   editable = editable ? 1 : 0;
 
-  let eventStyle = fieldData[getFMFieldName("EventStyleField")];
+  const eventStyle = fieldData[getFMFieldName("EventStyleField")];
+  const styleObj = getStyle(eventStyle);
 
-  eventStyle = eventStyle ? theme(eventStyle) : null;
-
-  const event = { id, start, title, end, allDay, editable, ...eventStyle };
+  const event = { id, start, title, end, allDay, editable, ...styleObj };
 
   return event;
 }
@@ -75,4 +74,13 @@ export function dispatchEventToFm(EventType, data) {
   fmCallScript("FCCalenderEvents", data, options);
 }
 
-export const getConfig = () => {};
+function getStyle(eventStyle) {
+  if (!eventStyle) return;
+
+  try {
+    eventStyle = JSON.parse(eventStyle);
+  } catch (e) {
+    eventStyle = theme(eventStyle);
+  }
+  return eventStyle;
+}
