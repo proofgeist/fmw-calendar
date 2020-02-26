@@ -10,7 +10,12 @@ import {
   newEventFetcher,
   dispatchEventToFm
 } from "./eventUtils";
-import { eventRender, handleEventDrop, handleEventResize } from "./events";
+import {
+  eventRender,
+  handleEventDrop,
+  handleEventResize,
+  handleEventSelect
+} from "./events";
 import theme from "./event.themes";
 import "./main.scss";
 
@@ -80,6 +85,7 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
       <div className="demo-app-calendar">
         <FullCalendar
           nowIndicator={true}
+          selectable={true}
           eventDataTransform={transformEvent}
           defaultView={defaultView}
           plugins={[
@@ -97,15 +103,13 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
               ...styles
             }
           ]}
-          dateClick={date => {
-            dispatchEventToFm("DateClick", { date: date.dateStr });
-          }}
           eventBackgroundColor="#E7F5FA"
           eventTextColor="#00425E"
           eventBorderColor="#B9E1F1"
           eventRender={eventRender}
           eventResize={handleEventResize}
           eventDrop={handleEventDrop}
+          select={handleEventSelect}
           style={{ borderRadius: "10px" }}
           editable={true}
           themeSystem="bootstrap"

@@ -62,3 +62,21 @@ export const handleEventDrop = event => {
     eventDisplayLayout
   });
 };
+
+export const handleEventSelect = selectInfo => {
+  const { allDay, end: endTS, start: stateTS } = selectInfo;
+
+  const startDateStr = moment(stateTS).format("L");
+  const startTimeStr = moment(stateTS).format("LTS");
+  const endDateStr = moment(endTS).format("L");
+  const EndTimeStr = moment(endTS).format("LTS");
+  const eventInfo = {
+    startDateStr,
+    startTimeStr,
+    endDateStr,
+    EndTimeStr,
+    allDay
+  };
+
+  console.log(eventInfo);
+};
