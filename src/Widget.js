@@ -6,11 +6,9 @@ import CalendarConfigurator from "./components/CalendarConfigurator";
 import { useFMPerformJS } from "fmw-react-hooks";
 
 function FCCalendar(initialProps) {
+  //has a config been loaded yet
   const noConfig = !initialProps.Config.EventPrimaryKeyField;
-
   const showConfigurator = useFMPerformJS(noConfig, "Calendar_ShowConfig");
-  //if there is no config this is wrong right now but will deal later
-
   let data;
   if (noConfig) {
     data = { Config: defaultConfig, AddonUUID: initialProps.AddonUUID };

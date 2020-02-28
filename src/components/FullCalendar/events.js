@@ -1,6 +1,10 @@
 import { dispatchEventToFm } from "./eventUtils";
 import { getConfig } from "fmw-utils";
 import moment from "moment";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/scale.css";
+import "tippy.js/themes/light-border.css";
 
 const handleDoubleClick = event => {
   const idFieldName = getConfig("EventPrimaryKeyField");
@@ -18,19 +22,35 @@ export const eventRender = event => {
   event.el.addEventListener("dblclick", () => {
     handleDoubleClick(event);
   });
+
+  const desc = event.event.extendedProps.description;
+
+  if (desc) {
+    tippy(event.el, {
+      content: desc,
+      allowHTML: false,
+      theme: "light",
+      placement: "top",
+      delay: "1000"
+    });
+  }
 };
 
 export const handleEventResize = ({ event }) => {
   const { id, end } = event;
-  const endFieldName = getConfig("EventEndField");
+  const endDateFieldName = getConfig("EventEndDateField");
+  const endTimeFieldName = getConfig("EventEndTimeField");
   const idFieldName = getConfig("EventPrimaryKeyField");
-  const newEndTimeStamp = moment(end).format("L LTS");
+  const newEndTime = moment(end).format("LTS");
+  const newEndDate = moment(end).format("L");
   const eventDisplayLayout = getConfig("EventDetailLayout");
   dispatchEventToFm("EventResized", {
     id,
-    newEndTimeStamp,
+    endTimeFieldName,
     idFieldName,
-    endFieldName,
+    newEndTime,
+    newEndDate,
+    endDateFieldName,
     eventDisplayLayout
   });
 };
@@ -41,8 +61,8 @@ export const handleEventDrop = event => {
   const oldEnd = oldEvent.end;
   const delta = event.delta;
   const idFieldName = getConfig("EventPrimaryKeyField");
-  const startFieldName = getConfig("EventStartField");
-  const endFieldName = getConfig("EventEndField");
+  const startFieldName = getConfig("EventStartDateField");
+  const endFieldName = getConfig("EventEndDateField");
   const eventDisplayLayout = getConfig("EventDetailLayout");
   //calc new Format in the FM format for this local
   const newStartTimeStamp = moment(oldStart)
@@ -66,17 +86,16 @@ export const handleEventDrop = event => {
 export const handleEventSelect = selectInfo => {
   const { allDay, end: endTS, start: stateTS } = selectInfo;
 
-  const startDateStr = moment(stateTS).format("L");
-  const startTimeStr = moment(stateTS).format("LTS");
-  const endDateStr = moment(endTS).format("L");
+  const StartDateStr = moment(stateTS).format("L");
+  const StartTimeStr = moment(stateTS).format("LTS");
+  const EndDateStr = moment(endTS).format("L");
   const EndTimeStr = moment(endTS).format("LTS");
   const eventInfo = {
-    startDateStr,
-    startTimeStr,
-    endDateStr,
+    StartDateStr,
+    StartTimeStr,
+    EndDateStr,
     EndTimeStr,
-    allDay
+    AllDay: allDay
   };
-
-  console.log(eventInfo);
+  dispatchEventToFm("NewEventFromSelected", eventInfo);
 };

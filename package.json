@@ -10,6 +10,7 @@
     "@fullcalendar/moment": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
+    "@popperjs/core": "^2.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
@@ -30,6 +31,8 @@
     "react-scripts": "3.3.0",
     "reactcss": "^1.2.3",
     "swr": "^0.1.17",
+    "tippy.js": "^5.2.1",
+    "tooltip": "^1.6.1",
     "uuid": "^3.4.0"
   },
   "scripts": {

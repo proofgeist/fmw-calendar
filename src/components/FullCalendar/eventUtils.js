@@ -23,8 +23,8 @@ export async function fetchEvents(fetchInfo, Config) {
     .add(1, "month")
     .format("L");
 
-  const startFieldName = getFMFieldName("EventStartField");
-  const endFieldName = getFMFieldName("EventEndField");
+  const startFieldName = getFMFieldName("EventStartDateField");
+  const endFieldName = getFMFieldName("EventEndDateField");
 
   const request = {
     layouts: Config.EventDetailLayout.value,
@@ -50,10 +50,13 @@ export function transformEvent(fmEventRecord) {
   const fieldData = fmEventRecord.fieldData;
   const id = fieldData[getFMFieldName("EventPrimaryKeyField")];
   const title = fieldData[getFMFieldName("EventTitleField")];
-  let start = fieldData[getFMFieldName("EventStartField")];
-  start = moment(start).toDate();
-  let end = fieldData[getFMFieldName("EventEndField")];
-  end = moment(end).toDate();
+  const description = fieldData[getFMFieldName("EventDescriptionField")];
+  let startDate = fieldData[getFMFieldName("EventStartDateField")];
+  let startTime = fieldData[getFMFieldName("EventStartTimeField")];
+  let start = moment(startDate + " " + startTime).toDate();
+  let endDate = fieldData[getFMFieldName("EventEndDateField")];
+  let endTime = fieldData[getFMFieldName("EventEndTimeField")];
+  let end = moment(endDate + " " + endTime).toDate();
   let allDay = fieldData[getFMFieldName("EventAllDayField")];
   allDay = allDay ? 1 : 0;
   let editable = fieldData[getFMFieldName("EventEditableField")];
@@ -62,7 +65,16 @@ export function transformEvent(fmEventRecord) {
   const eventStyle = fieldData[getFMFieldName("EventStyleField")];
   const styleObj = getStyle(eventStyle);
 
-  const event = { id, start, title, end, allDay, editable, ...styleObj };
+  const event = {
+    id,
+    start,
+    title,
+    description,
+    end,
+    allDay,
+    editable,
+    ...styleObj
+  };
 
   return event;
 }

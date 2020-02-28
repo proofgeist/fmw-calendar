@@ -17,6 +17,10 @@ export const findRecords = request => {
 };
 
 export function responseParse(result) {
+  if (result.messages[0].code === "401") {
+    return { data: [] };
+  }
+
   return {
     ok: (result.messages[0].code = 0 ? true : false),
     data: result.response.data,

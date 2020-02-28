@@ -33,37 +33,67 @@
   "EventTitleField": {
     "category": "General Options",
     "help": "Choose the field that contains your Event title",
-    "label": "Event Title",
+    "label": "Title",
     "sort": 3,
     "type": "select",
     "options": "",
     "value": "",
     "fmSchema": { "type": "Field", "FieldType": "Text" }
   },
-  "EventStartField": {
+  "EventDescriptionField": {
     "category": "General Options",
-    "help": "Choose the field that contains your Event title",
-    "label": "Event Start TimeStamp",
+    "help": "Choose the text field that contains your event description",
+    "label": "Description",
+    "sort": 3,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchema": { "type": "Field", "FieldType": "Text" }
+  },
+  "EventStartDateField": {
+    "category": "General Options",
+    "help": "Choose the field that contains the Start Date",
+    "label": "Start Date",
     "sort": 4,
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchema": { "type": "Field", "FieldType": "TimeStamp" }
+    "fmSchema": { "type": "Field", "FieldType": "Date" }
   },
-  "EventEndField": {
+  "EventStartTimeField": {
     "category": "General Options",
-    "help": "Choose the field that contains the event End Time Stamp",
-    "label": "Event End Timestamp",
+    "help": "Choose the field that contains the Start Time",
+    "label": "Start Time",
+    "sort": 4,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchema": { "type": "Field", "FieldType": "Time" }
+  },
+  "EventEndDateField": {
+    "category": "General Options",
+    "help": "Choose the field that contains the event End Date",
+    "label": "End Date",
     "sort": 5,
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchema": { "type": "Field", "FieldType": "TimeStamp" }
+    "fmSchema": { "type": "Field", "FieldType": "Date" }
+  },
+  "EventEndTimeField": {
+    "category": "General Options",
+    "help": "Choose the field that contains the event End Time",
+    "label": "Event End Time",
+    "sort": 5,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "fmSchema": { "type": "Field", "FieldType": "Time" }
   },
   "EventAllDayField": {
     "category": "General Options",
     "help": "Choose the field that contains your Event title",
-    "label": "Event All Day Field",
+    "label": "All Day Field",
     "sort": 6,
     "type": "select",
     "options": "",
@@ -73,7 +103,7 @@
   "EventEditableField": {
     "category": "General Options",
     "help": "Choose the field that determines if this event is editable",
-    "label": "Event Editable",
+    "label": "Editable",
     "sort": 7,
     "type": "select",
     "options": "",
@@ -83,7 +113,7 @@
   "EventStyleField": {
     "category": "General Options",
     "help": "Choose the field that determines if this event is editable",
-    "label": "Event Style",
+    "label": "Style",
     "sort": 7,
     "type": "select",
     "options": "",
