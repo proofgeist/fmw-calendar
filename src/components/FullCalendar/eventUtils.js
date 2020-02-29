@@ -16,11 +16,12 @@ import theme from "./event.themes";
  */
 export async function fetchEvents(fetchInfo, Config) {
   const { start, end } = fetchInfo;
+
   const startStr = moment(start)
-    .subtract(1, "month")
+    .subtract(2, "days")
     .format("L");
   const endStr = moment(end)
-    .add(1, "month")
+    .add(2, "days")
     .format("L");
 
   const startFieldName = getFMFieldName("EventStartDateField");
@@ -31,7 +32,7 @@ export async function fetchEvents(fetchInfo, Config) {
     query: [
       { [startFieldName]: `>=${startStr}`, [endFieldName]: `<${endStr}` }
     ],
-    limit: 300
+    limit: 3000
   };
   const response = await findRecords(request);
 

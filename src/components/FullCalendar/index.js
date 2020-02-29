@@ -112,6 +112,7 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
           select={handleEventSelect}
           style={{ borderRadius: "10px" }}
           editable={true}
+          lazyFetching={false}
           themeSystem="bootstrap"
         />
       </div>
