@@ -10,10 +10,13 @@ const handleDoubleClick = event => {
   const idFieldName = getConfig("EventPrimaryKeyField");
   const eventDisplayLayout = getConfig("EventDetailLayout");
 
+  const editable = event.event.editable;
+
   dispatchEventToFm("EventClick", {
     id: event.event.id,
     eventDisplayLayout,
-    idFieldName
+    idFieldName,
+    editable
   });
 };
 
@@ -61,25 +64,34 @@ export const handleEventDrop = event => {
   const oldEnd = oldEvent.end;
   const delta = event.delta;
   const idFieldName = getConfig("EventPrimaryKeyField");
-  const startFieldName = getConfig("EventStartDateField");
-  const endFieldName = getConfig("EventEndDateField");
+  const startDateFieldName = getConfig("EventStartDateField");
+  const endDateFieldName = getConfig("EventEndDateField");
+  const startTimeFieldName = getConfig("EventStartTimeField");
+  const endTimeFieldName = getConfig("EventEndTimeField");
   const eventDisplayLayout = getConfig("EventDetailLayout");
   //calc new Format in the FM format for this local
-  const newStartTimeStamp = moment(oldStart)
-    .add(delta)
-    .format("L LTS");
-  const newEndTimeStamp = moment(oldEnd)
-    .add(delta)
-    .format("L LTS");
+  const newStartTimeStamp = moment(oldStart).add(delta);
+  const newStartDate = newStartTimeStamp.format("L");
+  const newStartTime = newStartTimeStamp.format("LTS");
+
+  const newEndTimeStamp = moment(oldEnd).add(delta);
+  const newEndDate = newEndTimeStamp.format("L");
+  const newEndTime = newEndTimeStamp.format("LTS");
+  console.log(newStartDate, newStartTime);
+  console.log(newEndDate, newEndTime);
 
   dispatchEventToFm("EventDropped", {
-    newStartTimeStamp,
-    id: event.event.id,
-    startFieldName,
+    eventDisplayLayout,
     idFieldName,
-    endFieldName,
-    newEndTimeStamp,
-    eventDisplayLayout
+    id: event.event.id,
+    startDateFieldName,
+    newStartDate,
+    endDateFieldName,
+    newEndDate,
+    startTimeFieldName,
+    newStartTime,
+    endTimeFieldName,
+    newEndTime
   });
 };
 

@@ -51,19 +51,38 @@ export function transformEvent(fmEventRecord) {
   const fieldData = fmEventRecord.fieldData;
   const id = fieldData[getFMFieldName("EventPrimaryKeyField")];
   const title = fieldData[getFMFieldName("EventTitleField")];
-  const description = fieldData[getFMFieldName("EventDescriptionField")];
+
   let startDate = fieldData[getFMFieldName("EventStartDateField")];
   let startTime = fieldData[getFMFieldName("EventStartTimeField")];
   let start = moment(startDate + " " + startTime).toDate();
   let endDate = fieldData[getFMFieldName("EventEndDateField")];
   let endTime = fieldData[getFMFieldName("EventEndTimeField")];
   let end = moment(endDate + " " + endTime).toDate();
-  let allDay = fieldData[getFMFieldName("EventAllDayField")];
-  allDay = allDay ? 1 : 0;
-  let editable = fieldData[getFMFieldName("EventEditableField")];
-  editable = editable ? 1 : 0;
 
-  const eventStyle = fieldData[getFMFieldName("EventStyleField")];
+  const descriptionFieldName = getFMFieldName("EventDescriptionField");
+  let description = "";
+  if (descriptionFieldName) {
+    description = fieldData[descriptionFieldName];
+  }
+
+  const allDayFieldName = getFMFieldName("EventAllDayField");
+  let allDay = 0;
+  if (allDayFieldName) {
+    allDay = fieldData[allDayFieldName];
+    allDay = allDay ? 1 : 0;
+  }
+  const editableFieldName = getFMFieldName("EventEditableField");
+  let editable = 1;
+  if (editableFieldName) {
+    editable = fieldData[editableFieldName];
+    editable = editable ? 1 : 0;
+  }
+
+  const eventStyleFieldName = getFMFieldName("EventStyleField");
+  let eventStyle = "blue";
+  if (eventStyleFieldName) {
+    eventStyle = fieldData[eventStyleFieldName];
+  }
   const styleObj = getStyle(eventStyle);
 
   const event = {
@@ -100,9 +119,19 @@ function getStyle(eventStyle) {
 
 export function getFirstDay() {
   let firstDayName = getConfig("StartOnDay").toLowerCase();
-  let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  let days = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
   let i = days.findIndex(i => {
     return i === firstDayName;
   });
+
+  if (!i) return 0; //sunday
   return i;
 }
