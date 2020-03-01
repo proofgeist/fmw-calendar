@@ -5,10 +5,12 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import momentPlugin from "@fullcalendar/moment";
 import bootstrapPlugin from "@fullcalendar/bootstrap";
+import { getConfig } from "fmw-utils";
 import {
   transformEvent,
   newEventFetcher,
-  dispatchEventToFm
+  dispatchEventToFm,
+  getFirstDay
 } from "./eventUtils";
 import {
   eventRender,
@@ -20,7 +22,6 @@ import theme from "./event.themes";
 import "./main.scss";
 
 export default function Calendar({ AddonUUID, Meta, Config }) {
-  const { defaultView } = Config;
   const fetchEvents = newEventFetcher(Config);
 
   const calendarComponentRef = useRef();
@@ -79,15 +80,27 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
   };
 
   const styles = theme(Config.DefaultEventStyle.value);
+  let startView = getConfig("StartingView");
+  if (startView.toLowerCase() === "day") {
+    startView = "timeGridDay";
+  } else if (startView.toLowerCase() === "week") {
+    startView = "timeGridWeek";
+  } else {
+    startView = "dayGridMonth";
+  }
+
+  const firstDay = getFirstDay();
+  console.log(firstDay);
 
   return (
     <div className="demo-app">
       <div className="demo-app-calendar">
         <FullCalendar
+          firstDay={firstDay}
           nowIndicator={true}
           selectable={true}
           eventDataTransform={transformEvent}
-          defaultView={defaultView}
+          defaultView={startView}
           plugins={[
             dayGridPlugin,
             timeGridPlugin,

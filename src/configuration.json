@@ -1,14 +1,16 @@
 {
   "EventDetailLayout": {
     "category": "General Options",
-    "help": "Select the layout that displays your events",
+    "help": "Fields that are on this layout will be available to be selected below. This layout will also be used to display the event when double clicking on an event.",
     "label": "Event Detail Layout",
     "sort": 1,
     "type": "select",
-    "options": "",
-    "value": "",
+    "options": ["hello", "goodbye"],
+    "value": "hello",
+    "column": 1,
     "reScanOnChange": true,
-    "fmSchema": { "type": "Layout" }
+    "fmSchema": { "type": "Layout" },
+    "rightLabel": "Layout"
   },
   "DefaultEventStyle": {
     "category": "General Options",
@@ -18,106 +20,170 @@
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
     "fmSchema": { "type": "ValueList" }
   },
   "EventPrimaryKeyField": {
     "category": "General Options",
-    "help": "Choose the Primary Key Field for you event",
+    "help": "Select the primary key or unique ID for the event Table.",
     "label": "Primary Key Field",
     "sort": 2,
     "type": "select",
     "options": "",
-    "value": ""
+    "column": 1,
+    "value": "",
+    "rightLabel": "Number or Text Field"
   },
 
   "EventTitleField": {
     "category": "General Options",
-    "help": "Choose the field that contains your Event title",
-    "label": "Title",
+    "help": "This field's value is what you'll see on the Calendar.",
+    "label": "Title Field",
     "sort": 3,
     "type": "select",
     "options": "",
     "value": "",
-    "fmSchema": { "type": "Field", "FieldType": "Text" }
+    "column": 1,
+    "fmSchema": { "type": "Field", "FieldType": "Text" },
+    "rightLabel": "Text Field"
   },
   "EventDescriptionField": {
     "category": "General Options",
-    "help": "Choose the text field that contains your event description",
-    "label": "Description",
+    "help": "This field's value will show up in the Tool tip whn hovering over an event.",
+    "label": "Tooltip Field",
     "sort": 3,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
+    "rightLabel": "Text Field",
     "fmSchema": { "type": "Field", "FieldType": "Text" }
   },
   "EventStartDateField": {
     "category": "General Options",
-    "help": "Choose the field that contains the Start Date",
-    "label": "Start Date",
+    "help": "This field's value is the event's Start Date.",
+    "label": "Start Date Field",
     "sort": 4,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
+    "rightLabel": "Date Field",
     "fmSchema": { "type": "Field", "FieldType": "Date" }
   },
   "EventStartTimeField": {
     "category": "General Options",
-    "help": "Choose the field that contains the Start Time",
-    "label": "Start Time",
+    "help": "This field's value is the event's Start Time.",
+    "label": "Start Time Field",
     "sort": 4,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
+    "rightLabel": "Time Field",
     "fmSchema": { "type": "Field", "FieldType": "Time" }
   },
   "EventEndDateField": {
     "category": "General Options",
-    "help": "Choose the field that contains the event End Date",
-    "label": "End Date",
+    "help": "This field's value is the event's End Date.",
+    "label": "End Date Field",
     "sort": 5,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
+    "rightLabel": "Date Field",
     "fmSchema": { "type": "Field", "FieldType": "Date" }
   },
   "EventEndTimeField": {
     "category": "General Options",
-    "help": "Choose the field that contains the event End Time",
-    "label": "Event End Time",
+    "help": "This field's value is the end time of the event.",
+    "label": "End Time Field",
     "sort": 5,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 1,
+    "rightLabel": "Time Field",
     "fmSchema": { "type": "Field", "FieldType": "Time" }
   },
   "EventAllDayField": {
     "category": "General Options",
-    "help": "Choose the field that contains your Event title",
+    "help": "This field's value determines if the event shows up in top of the calendar.",
     "label": "All Day Field",
     "sort": 6,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 2,
+    "rightLabel": "Number Field",
     "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
   "EventEditableField": {
     "category": "General Options",
-    "help": "Choose the field that determines if this event is editable",
-    "label": "Editable",
+    "help": "If This field's value  is 1, then the event will be editable on the calendar",
+    "label": "Editable Field",
     "sort": 7,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 2,
+    "rightLabel": "Number Field",
     "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
   "EventStyleField": {
     "category": "General Options",
-    "help": "Choose the field that determines if this event is editable",
-    "label": "Style",
+    "help": "This field's value will override the default Calendar style for the event.",
+    "label": "Event Style Field",
     "sort": 7,
     "type": "select",
     "options": "",
     "value": "",
+    "column": 2,
+    "rightLabel": "Text Field",
     "fmSchema": { "type": "Field", "FieldType": "String" }
+  },
+
+  "EventFilterField": {
+    "category": "General Options",
+    "help": "This is the field that will be searched by this filter",
+    "label": "Search Field",
+    "sort": 7,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "column": 2,
+    "rightLabel": "Any Searchable Field"
+  },
+  "EventFilterQueryField": {
+    "category": "General Options",
+    "help": "The value in this field will be used to search the field above. It use FileMaker operator styles",
+    "label": "Find Criteria Field",
+    "sort": 7,
+    "type": "select",
+    "options": "",
+    "value": "",
+    "column": 2,
+    "rightLabel": "Text Result Field"
+  },
+  "StartOnDay": {
+    "category": "General Options",
+    "help": "Should the calendar start on Sunday or Monday.",
+    "label": "Start On Day",
+    "sort": 7,
+    "type": "select",
+    "options": ["Sunday", "Monday"],
+    "value": "Monday",
+    "column": 2
+  },
+  "StartingView": {
+    "category": "General Options",
+    "help": "Choose the view the calendar will open to.",
+    "label": "Default Calendar View",
+    "sort": 7,
+    "type": "select",
+    "options": ["Day", "Week", "Month"],
+    "value": "Month",
+    "column": 2
   }
 }

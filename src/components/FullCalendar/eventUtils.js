@@ -1,5 +1,5 @@
 import moment from "moment";
-import { fmCallScript, getFMFieldName } from "fmw-utils";
+import { fmCallScript, getFMFieldName, getConfig } from "fmw-utils";
 import { findRecords } from "../../api";
 import theme from "./event.themes";
 
@@ -96,4 +96,13 @@ function getStyle(eventStyle) {
     eventStyle = theme(eventStyle);
   }
   return eventStyle;
+}
+
+export function getFirstDay() {
+  let firstDayName = getConfig("StartOnDay").toLowerCase();
+  let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  let i = days.findIndex(i => {
+    return i === firstDayName;
+  });
+  return i;
 }

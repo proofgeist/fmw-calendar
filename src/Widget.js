@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import FullCalendar from "./components/FullCalendar";
 import defaultConfig from "./configuration.json";
-import CalendarConfigurator from "./components/CalendarConfigurator";
+import Configurator from "./components/Configurator";
 
 import { useFMPerformJS } from "fmw-react-hooks";
 
 function FCCalendar(initialProps) {
-  //has a config been loaded yet
   const noConfig = !initialProps.Config.EventPrimaryKeyField;
-  const showConfigurator = useFMPerformJS(noConfig, "Calendar_ShowConfig");
+  const [showConfigurator, setShowConfigurator] = useState(false);
+
+  window.Calendar_ShowConfig = () => {
+    setShowConfigurator(true);
+  };
+
   let data;
   if (noConfig) {
     data = { Config: defaultConfig, AddonUUID: initialProps.AddonUUID };
@@ -18,17 +22,11 @@ function FCCalendar(initialProps) {
     data = initialProps;
   }
 
-  return (
-    <>
-      <CalendarConfigurator
-        headerText="Calendar Configurator"
-        topWidth="400px"
-        startOpen={showConfigurator}
-        {...data}
-      />
-      {noConfig ? null : <FullCalendar {...initialProps} />}
-    </>
-  );
+  if (showConfigurator || noConfig) {
+    return <Configurator {...data} />;
+  }
+
+  return <FullCalendar {...initialProps} />;
 }
 
 export default FCCalendar;
