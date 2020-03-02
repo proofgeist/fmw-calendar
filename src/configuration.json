@@ -9,6 +9,7 @@
     "value": "hello",
     "column": 1,
     "reScanOnChange": true,
+    "required": true,
     "fmSchema": { "type": "Layout" },
     "rightLabel": "Layout"
   },
@@ -31,8 +32,9 @@
     "sort": 2,
     "type": "select",
     "options": "",
-    "column": 1,
+    "required": true,
     "value": "",
+    "required": true,
     "rightLabel": "Number or Text Field"
   },
 
@@ -44,7 +46,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
+    "required": true,
     "fmSchema": { "type": "Field", "FieldType": "Text" },
     "rightLabel": "Text Field"
   },
@@ -56,7 +58,6 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
     "rightLabel": "Text Field",
     "fmSchema": { "type": "Field", "FieldType": "Text" }
   },
@@ -68,7 +69,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
+    "required": true,
     "rightLabel": "Date Field",
     "fmSchema": { "type": "Field", "FieldType": "Date" }
   },
@@ -80,7 +81,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
+    "required": true,
     "rightLabel": "Time Field",
     "fmSchema": { "type": "Field", "FieldType": "Time" }
   },
@@ -92,7 +93,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
+    "required": true,
     "rightLabel": "Date Field",
     "fmSchema": { "type": "Field", "FieldType": "Date" }
   },
@@ -104,7 +105,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 1,
+    "required": true,
     "rightLabel": "Time Field",
     "fmSchema": { "type": "Field", "FieldType": "Time" }
   },
@@ -116,7 +117,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 2,
+
     "rightLabel": "Number Field",
     "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
@@ -128,7 +129,7 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 2,
+
     "rightLabel": "Number Field",
     "fmSchema": { "type": "Field", "FieldType": "Number" }
   },
@@ -140,31 +141,31 @@
     "type": "select",
     "options": "",
     "value": "",
-    "column": 2,
+
     "rightLabel": "Text Field",
     "fmSchema": { "type": "Field", "FieldType": "String" }
   },
 
   "EventFilterField": {
     "category": "General Options",
-    "help": "This is the field that will be searched by this filter",
-    "label": "Search Field",
+    "help": "This is the field that will be searched.",
+    "label": "Search in this Field",
     "sort": 7,
     "type": "select",
     "options": "",
     "value": "",
-    "column": 2,
+
     "rightLabel": "Any Searchable Field"
   },
   "EventFilterQueryField": {
     "category": "General Options",
-    "help": "The value in this field will be used to search the field above. It use FileMaker operator styles",
-    "label": "Find Criteria Field",
+    "help": "The value in this field will be used to search the field below.",
+    "label": "Search Criteria Field",
     "sort": 7,
     "type": "select",
     "options": "",
     "value": "",
-    "column": 2,
+
     "rightLabel": "Text Result Field"
   },
   "StartOnDay": {
@@ -174,8 +175,7 @@
     "sort": 7,
     "type": "select",
     "options": ["Sunday", "Monday"],
-    "value": "Monday",
-    "column": 2
+    "value": "Monday"
   },
   "StartingView": {
     "category": "General Options",
@@ -184,7 +184,6 @@
     "sort": 7,
     "type": "select",
     "options": ["Day", "Week", "Month"],
-    "value": "Month",
-    "column": 2
+    "value": "Month"
   }
 }

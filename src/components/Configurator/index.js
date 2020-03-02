@@ -10,16 +10,26 @@ import {
   FormText,
   Label,
   Form,
-  Button
+  Button,
+  Badge,
+  FormFeedback
 } from "reactstrap";
 import { buildDefaults } from "./utils";
 
-export default function Configurator({ Config, AddonUUID }) {
+export default function Configurator({ Config, AddonUUID, onCancel }) {
   const [d, setD] = useState(Config);
   const defaultValues = buildDefaults(Config);
 
-  const { handleSubmit, register, errors, getValues } = useForm({
-    defaultValues
+  const {
+    handleSubmit,
+    register,
+    errors,
+    getValues,
+    formState,
+    triggerValidation
+  } = useForm({
+    defaultValues,
+    mode: "onChange"
   });
 
   async function scanSchema() {
@@ -32,6 +42,7 @@ export default function Configurator({ Config, AddonUUID }) {
     });
     const newConfig = await fmFetch("FCCalendarSchema", config);
     setD(newConfig);
+    triggerValidation();
   }
 
   useEffect(() => {
@@ -47,7 +58,7 @@ export default function Configurator({ Config, AddonUUID }) {
   };
 
   function proper(name) {
-    return { register, ...d[name], name, onChange };
+    return { register, ...d[name], name, onChange, errors };
   }
   const onSubmit = async data => {
     const config = JSON.parse(JSON.stringify(d));
@@ -122,11 +133,25 @@ export default function Configurator({ Config, AddonUUID }) {
               Use the settings below to further filter the events that appear on
               the Calendar.
             </p>
-            <Control {...proper("EventFilterField")}></Control>
             <Control {...proper("EventFilterQueryField")}></Control>
+            <Control {...proper("EventFilterField")}></Control>
           </Col>
         </Row>
-        <Button>Save</Button>
+        <Button onClick={onCancel} color="secondary" outline>
+          Cancel
+        </Button>{" "}
+        <Button
+          disabled={!formState.dirty || !formState.isValid}
+          color="primary"
+          outline={!formState.dirty || !formState.isValid}
+        >
+          Save
+        </Button>{" "}
+        {!formState.dirty || !formState.isValid ? (
+          ""
+        ) : (
+          <Badge color="warning">Unsaved changes</Badge>
+        )}
       </Form>
     </Container>
   );
@@ -142,13 +167,31 @@ function Control(props) {
       schemaNote = props.fmSchema.FieldType + " " + schemaNote;
     }
 
+    const valObj = {
+      validate: value => {
+        if (!value) return;
+        if (!props.options) return;
+        if (props.options.indexOf(value) >= 0) return;
+        return "Please select from the available options";
+      }
+    };
+    if (props.required) {
+      valObj.required = "This option is required";
+    }
+
+    let error = props.errors ? props.errors[props.name] : null;
+    if (error && error.message) {
+      error = error.message;
+    }
+
     return (
       <FormGroup style={{ display }}>
         <span className="schema float-right">{props.rightLabel}</span>
         <Label for={props.name}>{props.label}</Label>
         <Input
+          invalid={error ? true : false}
           onChange={props.onChange}
-          innerRef={props.register}
+          innerRef={props.register(valObj)}
           bsSize="sm"
           type="select"
           name={props.name}
@@ -161,8 +204,9 @@ function Control(props) {
           })}
         </Input>
         <FormText>{props.help}</FormText>
+        <FormFeedback invalid>{error}</FormFeedback>
       </FormGroup>
     );
   }
-  return "whoops";
+  return "whoops"; // I am not using anything but selects in this one. :-(
 }

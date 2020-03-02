@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  font-family: "Helvetica Neue";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,6 +26,11 @@ div.form-group label {
   text-transform: uppercase;
   color: #7e7e7e;
   font-size: 12px;
+}
+div.invalid-feedback {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
 }
 
 div.form-group span.schema {

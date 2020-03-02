@@ -21,7 +21,7 @@ import {
 import theme from "./event.themes";
 import "./main.scss";
 
-export default function Calendar({ AddonUUID, Meta, Config }) {
+export default function Calendar({ Config }) {
   const fetchEvents = newEventFetcher(Config);
 
   const calendarComponentRef = useRef();
@@ -50,30 +50,34 @@ export default function Calendar({ AddonUUID, Meta, Config }) {
   }
 
   window.Calendar_Refresh = () => {
+    if (window._SHOW_CONFIG_) return null; //no-op
     const calendar = getCalendarObj();
-    console.log("refresh");
-
     calendar.refetchEvents();
   };
 
   window.Calendar_SetView = view => {
+    if (window._SHOW_CONFIG_) return null; //no-op
+
     const calendar = getCalendarObj();
     calendar.changeView(view);
     sendViewStateToFM();
   };
 
   window.Calendar_Next = () => {
+    if (window._SHOW_CONFIG_) return null; //no-op
     const calendar = getCalendarObj();
     calendar.next();
     sendViewStateToFM();
   };
   window.Calendar_Prev = () => {
+    if (window._SHOW_CONFIG_) return null; //no-op
     const calendar = getCalendarObj();
     calendar.prev();
     sendViewStateToFM();
   };
 
   window.Calendar_Today = () => {
+    if (window._SHOW_CONFIG_) return null; //no-op
     const calendar = getCalendarObj();
     calendar.today();
     sendViewStateToFM();

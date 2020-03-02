@@ -79,7 +79,7 @@ export function transformEvent(fmEventRecord) {
   }
 
   const eventStyleFieldName = getFMFieldName("EventStyleField");
-  let eventStyle = "blue";
+  let eventStyle = "";
   if (eventStyleFieldName) {
     eventStyle = fieldData[eventStyleFieldName];
   }
