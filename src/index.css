@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-color: white;
+}
+
 .form-control:focus {
   border-color: #0091ce;
   box-shadow: none;

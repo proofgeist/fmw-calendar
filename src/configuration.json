@@ -180,7 +180,7 @@
   "StartingView": {
     "category": "General Options",
     "help": "Choose the view the calendar will open to.",
-    "label": "Default Calendar View",
+    "label": "Default View",
     "sort": 7,
     "type": "select",
     "options": ["Day", "Week", "Month"],
