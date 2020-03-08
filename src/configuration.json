@@ -32,7 +32,6 @@
     "sort": 2,
     "type": "select",
     "options": "",
-    "required": true,
     "value": "",
     "required": true,
     "rightLabel": "Number or Text Field"
