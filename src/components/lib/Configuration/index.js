@@ -11,7 +11,7 @@ import {
 import Control from "./Control";
 
 import { buildDefaults } from "./utils";
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form/dist/react-hook-form.ie11";
 import "./index.css";
 
 export { MiniPage, ConfigMenu, ConfigContent, ConfigMenuItem, Control };
@@ -22,11 +22,11 @@ get schema, and eventually save the Config to the DB.
 */
 export default function Configurator(props) {
   const { Config, children } = props;
+  const defaultValues = buildDefaults(Config);
 
   // STATE store the CONFIG
   const [newConfig, setNewConfig] = useState(Config);
   const [currentNav, setNav] = useState("required");
-  const defaultValues = buildDefaults(newConfig);
 
   // FORM - useForm hook
   const {
@@ -35,7 +35,8 @@ export default function Configurator(props) {
     register,
     errors,
     formState,
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm({
     defaultValues,
     mode: "onChange"
@@ -49,7 +50,7 @@ export default function Configurator(props) {
     const name = e.target.name;
     const obj = Config[name];
     if (obj && obj.reScanOnChange) {
-      scanSchema();
+      //scanSchema();
     }
   };
 
@@ -57,7 +58,6 @@ export default function Configurator(props) {
    * SCANS THE DB FOR META DATA
    */
   async function scanSchema() {
-    //alert("ko");
     const currentFormValues = getValues();
     const config = JSON.parse(JSON.stringify(newConfig));
     //add current form state back to config
@@ -79,12 +79,10 @@ export default function Configurator(props) {
     await fmFetch(SAVE_CONFIG_SCRIPT, config);
   };
 
-  const cb = useCallback(scanSchema);
+  //const cb = useCallback(scanSchema);
   useEffect(() => {
     scanSchema();
   }, []);
-
-  ///
 
   function proper(name) {
     return { register, ...newConfig[name], name, onChange, errors };

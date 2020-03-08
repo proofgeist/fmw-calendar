@@ -39,7 +39,11 @@ export default function Control(props) {
         >
           <option value="">select...</option>
           {opts.map(o => {
-            return <option key={o}>{o}</option>;
+            return (
+              <option value={o} key={o}>
+                {o}
+              </option>
+            );
           })}
         </Input>
         <FormText>{props.help}</FormText>
