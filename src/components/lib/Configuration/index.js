@@ -50,7 +50,7 @@ export default function Configurator(props) {
     const name = e.target.name;
     const obj = Config[name];
     if (obj && obj.reScanOnChange) {
-      //scanSchema();
+      scanSchema();
     }
   };
 
