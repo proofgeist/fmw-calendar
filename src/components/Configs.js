@@ -41,7 +41,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="filter"
-          label="Calendar Filter"
+          label="Filter"
           fieldsToTrackErrorsArray={[
             "EventFilterQueryField",
             "EventFilterField"
@@ -50,7 +50,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="calendar-settings"
-          label="Calendar Settings"
+          label="Other"
           fieldsToTrackErrorsArray={[
             "DefaultEventStyle",
             "StartOnDay",
@@ -79,12 +79,12 @@ export default function({ menuProps, currentNav, proper }) {
           <Control {...proper("EventStyleField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="filter">
-          <h4>Calendar Filter</h4>
+          <h4>Filtering Events</h4>
           <Control {...proper("EventFilterQueryField")}></Control>
           <Control {...proper("EventFilterField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="calendar-settings">
-          <h4>Additional Calendar Settings</h4>
+          <h4>Other Settings</h4>
           <Control {...proper("DefaultEventStyle")}></Control>
           <Row>
             <Col>
