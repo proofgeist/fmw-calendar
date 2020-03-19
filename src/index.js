@@ -12,4 +12,8 @@ function BootWidget(props) {
   ReactDOM.render(<Widget {...props} />, document.getElementById("root"));
 }
 
-init(BootWidget);
+//this function is run via the body's onload attribute
+//<body onload="fmwInit()">
+window.fmwInit = function fmwInit() {
+  init(BootWidget);
+};
