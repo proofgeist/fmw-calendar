@@ -19,10 +19,10 @@ export async function fetchEvents(fetchInfo, Config) {
 
   const startStr = moment(start)
     .subtract(2, "days")
-    .format("L");
+    .format("YYYY+MM+DD");
   const endStr = moment(end)
     .add(2, "days")
-    .format("L");
+    .format("YYYY+MM+DD");
 
   const startFieldName = getFMFieldName("EventStartDateField");
   const endFieldName = getFMFieldName("EventEndDateField");
@@ -71,6 +71,7 @@ export function transformEvent(fmEventRecord) {
     allDay = fieldData[allDayFieldName];
     allDay = allDay ? 1 : 0;
   }
+
   const editableFieldName = getFMFieldName("EventEditableField");
   let editable = 1;
   if (editableFieldName) {
@@ -103,7 +104,7 @@ export function dispatchEventToFm(EventType, data) {
   const options = {
     eventType: EventType
   };
-  fmCallScript("FCCalenderEvents", data, options);
+  fmCallScript("FCCalendarEvents", data, options);
 }
 
 function getStyle(eventStyle) {

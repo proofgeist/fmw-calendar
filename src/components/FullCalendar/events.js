@@ -44,8 +44,8 @@ export const handleEventResize = ({ event }) => {
   const endDateFieldName = getConfig("EventEndDateField");
   const endTimeFieldName = getConfig("EventEndTimeField");
   const idFieldName = getConfig("EventPrimaryKeyField");
-  const newEndTime = moment(end).format("LTS");
-  const newEndDate = moment(end).format("L");
+  const newEndTime = moment(end).format("HH:mm:ss");
+  const newEndDate = moment(end).format("YYYY+MM+DD");
   const eventDisplayLayout = getConfig("EventDetailLayout");
   dispatchEventToFm("EventResized", {
     id,
@@ -71,12 +71,12 @@ export const handleEventDrop = event => {
   const eventDisplayLayout = getConfig("EventDetailLayout");
   //calc new Format in the FM format for this local
   const newStartTimeStamp = moment(oldStart).add(delta);
-  const newStartDate = newStartTimeStamp.format("L");
-  const newStartTime = newStartTimeStamp.format("LTS");
+  const newStartDate = newStartTimeStamp.format("YYYY+MM+DD");
+  const newStartTime = newStartTimeStamp.format("HH:mm:ss");
 
   const newEndTimeStamp = moment(oldEnd).add(delta);
-  const newEndDate = newEndTimeStamp.format("L");
-  const newEndTime = newEndTimeStamp.format("LTS");
+  const newEndDate = newEndTimeStamp.format("YYYY+MM+DD");
+  const newEndTime = newEndTimeStamp.format("HH:mm:ss");
   console.log(newStartDate, newStartTime);
   console.log(newEndDate, newEndTime);
 
@@ -98,10 +98,10 @@ export const handleEventDrop = event => {
 export const handleEventSelect = selectInfo => {
   const { allDay, end: endTS, start: stateTS } = selectInfo;
 
-  const StartDateStr = moment(stateTS).format("L");
-  const StartTimeStr = moment(stateTS).format("LTS");
-  const EndDateStr = moment(endTS).format("L");
-  const EndTimeStr = moment(endTS).format("LTS");
+  const StartDateStr = moment(stateTS).format("YYYY+MM+DD");
+  const StartTimeStr = moment(stateTS).format("HH:mm:ss");
+  const EndDateStr = moment(endTS).format("YYYY+MM+DD");
+  const EndTimeStr = moment(endTS).format("HH:mm:ss");
   const eventInfo = {
     StartDateStr,
     StartTimeStr,
