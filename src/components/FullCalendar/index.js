@@ -94,7 +94,6 @@ export default function Calendar({ Config }) {
   }
 
   const firstDay = getFirstDay();
-  console.log(firstDay);
 
   return (
     <div className="demo-app">
