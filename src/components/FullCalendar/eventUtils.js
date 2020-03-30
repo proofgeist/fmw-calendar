@@ -43,6 +43,18 @@ export function newEventFetcher(Config) {
   return fetchInfo => fetchEvents(fetchInfo, Config);
 }
 
+function fmTimeStamp(dateString, timeString) {
+  const firstFour = dateString.substring(0, 4);
+  let format;
+  if (firstFour.includes("/")) {
+    format = "MM/DD/YYYYTHH:mm:ss";
+  } else {
+    format = "YYYY/MM/DDTHH:mm:ss";
+  }
+  const ts = dateString + "T" + timeString;
+  return moment(ts, format).toDate();
+}
+
 /**
  * fullcalendar event fetcher
  * @param {array} fmEventRecord an the fmRecordObject for the event
@@ -54,10 +66,11 @@ export function transformEvent(fmEventRecord) {
 
   let startDate = fieldData[getFMFieldName("EventStartDateField")];
   let startTime = fieldData[getFMFieldName("EventStartTimeField")];
-  let start = moment(startDate + " " + startTime).toDate();
+  let start = fmTimeStamp(startDate, startTime);
+
   let endDate = fieldData[getFMFieldName("EventEndDateField")];
   let endTime = fieldData[getFMFieldName("EventEndTimeField")];
-  let end = moment(endDate + " " + endTime).toDate();
+  let end = fmTimeStamp(endDate, endTime);
 
   const descriptionFieldName = getFMFieldName("EventDescriptionField");
   let description = "";
