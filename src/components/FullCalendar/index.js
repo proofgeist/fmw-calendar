@@ -21,7 +21,7 @@ import {
 import theme from "./event.themes";
 import "./main.scss";
 
-export default function Calendar({ Config }) {
+export default function Calendar({ Config, webDirectRefresh }) {
   const fetchEvents = newEventFetcher(Config);
 
   const calendarComponentRef = useRef();
@@ -43,8 +43,20 @@ export default function Calendar({ Config }) {
       activeEnd: calendarView.activeEnd,
       currentStart: calendarView.currentStart,
       currentEnd: calendarView.currentEnd,
-      currentDate: calendar.state.currentDate
+      currentDate: calendar.state.currentDate,
+      calendarDate: calendar.getDate()
     };
+
+    if (window.onWebdInternalRefresh) {
+      // this will only run on WebD
+      window.sessionStorage.setItem(
+        "fccalendar.cache",
+        JSON.stringify({
+          startView: obj.type,
+          defaultDate: calendar.getDate()
+        })
+      );
+    }
 
     dispatchEventToFm("ViewStateChanged", obj);
   }
@@ -93,6 +105,20 @@ export default function Calendar({ Config }) {
     startView = "dayGridMonth";
   }
 
+  let defaultDate;
+  if (webDirectRefresh === true) {
+    console.log(
+      "calendar booting after a webd refresh",
+      webDirectRefresh === true
+    );
+    let cache = window.sessionStorage.getItem("fccalendar.cache");
+    try {
+      cache = JSON.parse(cache);
+      startView = cache.startView;
+      defaultDate = cache.defaultDate;
+    } catch (e) {}
+  }
+
   const firstDay = getFirstDay();
 
   return (
@@ -104,6 +130,7 @@ export default function Calendar({ Config }) {
           selectable={true}
           eventDataTransform={transformEvent}
           defaultView={startView}
+          defaultDate={defaultDate}
           plugins={[
             dayGridPlugin,
             timeGridPlugin,
