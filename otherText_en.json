@@ -1,0 +1,107 @@
+{
+  "RequiredMenu": {
+    "MenuLabel": "Required",
+    "PageTitle": "Required Options",
+    "Fields": {
+      "EventDetailLayout": {
+        "help": "Fields that are on this layout will be available to be selected below. This layout will also be used to display the event when double clicking on an event.",
+        "label": "Event Detail Layout",
+        "rightLabel": "Layout"
+      },
+      "EventPrimaryKeyField": {
+        "help": "Select the primary key or unique ID for the event Table.",
+        "label": "Primary Key Field",
+        "rightLabel": "Number or Text Field"
+      },
+      "EventTitleField": {
+        "help": "This field's value is what you'll see on the Calendar.",
+        "label": "Title Field",
+        "rightLabel": "Text Field"
+      },
+      "EventStartDateField": {
+        "help": "This field's value is the event's Start Date.",
+        "label": "Start Date Field",
+        "rightLabel": "Date Field"
+      },
+      "EventStartTimeField": {
+        "help": "This field's value is the event's Start Time.",
+        "label": "Start Time Field",
+        "rightLabel": "Time Field"
+      },
+      "EventEndDateField": {
+        "help": "This field's value is the event's End Date.",
+        "label": "End Date Field",
+        "rightLabel": "Date Field"
+      },
+      "EventEndTimeField": {
+        "help": "This field's value is the end time of the event.",
+        "label": "End Time Field",
+        "rightLabel": "Time Field"
+      }
+    }
+  },
+  "OtherMenu": {
+    "MenuLabel": "Optional Fields",
+    "PageTitle": "Additional Optional Fields",
+    "Fields": {
+      "EventDescriptionField": {
+        "help": "This field's value will show up in the Tool tip whn hovering over an event.",
+        "label": "Tooltip Field",
+        "rightLabel": "Text Field"
+      },
+      "EventAllDayField": {
+        "help": "This field's value determines if the event shows up in top of the calendar.",
+        "label": "All Day Field",
+        "rightLabel": "Number Field"
+      },
+      "EventEditableField": {
+        "help": "If This field's value is 1, then the event will be editable on the calendar",
+        "rightLabel": "Number Field",
+        "label": "Editable Field"
+      },
+      "EventStyleField": {
+        "help": "This field's value will override the default Calendar style for the event.",
+        "label": "Event Style Field",
+        "rightLabel": "Text Field"
+      }
+    }
+  },
+  "FilterMenu": {
+    "MenuLabel": "filter",
+    "PageTitle": "Filtering Events",
+    "Fields": {
+      "EventFilterField": {
+        "help": "This is the field that will be searched.",
+        "label": "Search in this Field",
+        "rightLabel": "Any Searchable Field"
+      },
+      "EventFilterQueryField": {
+        "help": "The value in this field will be used to search the field below.",
+        "label": "Search Criteria Field",
+        "rightLabel": "Text Result Field"
+      }
+    }
+  },
+  "SettingsMenu": {
+    "MenuLabel": "settings",
+    "PageTitle": "Other",
+
+    "Fields": {
+      "DefaultEventStyle": {
+        "help": "Choose the default style for all events",
+        "label": "Default Event Style",
+        "rightLabel": "Layout"
+      },
+      "StartOnDay": {
+        "help": "Should the calendar start on Sunday or Monday.",
+        "label": "Start On Day",
+        "options": ["Sunday", "Monday"]
+      },
+      "StartingView": {
+        "help": "Choose the view the calendar will open to.",
+        "label": "Default View",
+        "options": ["Day", "Week", "Month"]
+      }
+    }
+  }
+}
