@@ -34,7 +34,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="additional-fields"
-          label="Optional Fields"
+          label={Strings.OtherMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "EventDescriptionField",
             "EventAllDayField",
@@ -45,7 +45,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="filter"
-          label="Filter"
+          label={Strings.FilterMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "EventFilterQueryField",
             "EventFilterField"
@@ -54,7 +54,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="calendar-settings"
-          label="Other"
+          label={Strings.SettingsMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "DefaultEventStyle",
             "StartOnDay",
@@ -76,19 +76,19 @@ export default function({ menuProps, currentNav, proper }) {
           <Control {...proper("EventEndTimeField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="additional-fields">
-          <h4>Additional Optional Fields</h4>
+          <h4>{Strings.OtherMenu.PageTitle}</h4>
           <Control {...proper("EventDescriptionField")}></Control>
           <Control {...proper("EventAllDayField")}></Control>
           <Control {...proper("EventEditableField")}></Control>
           <Control {...proper("EventStyleField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="filter">
-          <h4>Filtering Events</h4>
+          <h4>{Strings.FilterMenu.PageTitle}</h4>
           <Control {...proper("EventFilterQueryField")}></Control>
           <Control {...proper("EventFilterField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="calendar-settings">
-          <h4>Other Settings</h4>
+          <h4>{Strings.SettingsMenu.PageTitle}</h4>
           <Control {...proper("DefaultEventStyle")}></Control>
           <Row>
             <Col>

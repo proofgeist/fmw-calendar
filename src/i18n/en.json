@@ -67,8 +67,8 @@
     }
   },
   "FilterMenu": {
-    "MenuLabel": "filter",
-    "PageTitle": "Filtering Events",
+    "MenuLabel": "Filter Settings",
+    "PageTitle": "Filter Settings",
     "Fields": {
       "EventFilterField": {
         "help": "This is the field that will be searched.",
@@ -83,8 +83,8 @@
     }
   },
   "SettingsMenu": {
-    "MenuLabel": "settings",
-    "PageTitle": "Other",
+    "MenuLabel": "Other Settings",
+    "PageTitle": "Other Settings",
 
     "Fields": {
       "DefaultEventStyle": {
