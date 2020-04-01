@@ -20,6 +20,7 @@ export function buildDefaults(Config) {
   Object.keys(Config).forEach(c => {
     obj[c] = Config[c].value;
   });
+
   return obj;
 }
 

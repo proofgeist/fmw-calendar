@@ -4,7 +4,7 @@
     "PageTitle": "Required Options",
     "Fields": {
       "EventDetailLayout": {
-        "help": "Fields that are on this layout will be available to be selected below. This layout will also be used to display the event when double clicking on an event.",
+        "help": "FIELDS that are on this layout will be available to be selected below. This layout will also be used to display the event when double clicking on an event.",
         "label": "Event Detail Layout",
         "rightLabel": "Layout"
       },

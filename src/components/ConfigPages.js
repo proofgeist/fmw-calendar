@@ -7,7 +7,11 @@ import {
   ConfigContent,
   MiniPage,
   Control
-} from "./lib/Configuration";
+} from "./lib/Configurator/ConfigWrapper";
+
+import i18n from "../i18n";
+
+const Strings = i18n();
 
 export default function({ menuProps, currentNav, proper }) {
   return (
@@ -16,7 +20,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="required"
-          label="Required"
+          label={Strings.RequiredMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "EventDetailLayout",
             "EventPrimaryKeyField",
@@ -62,7 +66,7 @@ export default function({ menuProps, currentNav, proper }) {
 
       <ConfigContent>
         <MiniPage current={currentNav} name="required">
-          <h4>Required Options</h4>
+          <h4>{Strings.RequiredMenu.PageTitle}</h4>
           <Control {...proper("EventDetailLayout")}></Control>
           <Control {...proper("EventPrimaryKeyField")}></Control>
           <Control {...proper("EventTitleField")}></Control>
