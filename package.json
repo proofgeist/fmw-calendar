@@ -41,7 +41,8 @@
     "start:https": "cross-env HTTPS=true react-scripts start",
     "upload": "node ./scripts/loadFinal",
     "build:upload": "npm run build:inline && npm run upload",
-    "openfile": "node ./scripts/openFileOnServer"
+    "openfile": "node ./scripts/openFileOnServer",
+    "downloadFile": "node ./scripts/downloadFromServer"
   },
   "eslintConfig": {
     "extends": "react-app"

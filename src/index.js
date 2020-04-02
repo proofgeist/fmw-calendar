@@ -9,11 +9,6 @@ import "./index.css";
 import Widget from "./Widget";
 
 function BootWidget(props) {
-  //only in WebD
-  // let lastState = window.sessionStorage.getItem("lastView");
-  // lastState = JSON.parse(lastState);
-  // props.Config.dDate = lastState.currentEnd;
-
   ReactDOM.render(<Widget {...props} />, document.getElementById("root"));
 }
 
