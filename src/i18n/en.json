@@ -71,14 +71,12 @@
     "PageTitle": "Filter Settings",
     "Fields": {
       "EventFilterField": {
-        "help": "This is the field that will be searched.",
-        "label": "Search in this Field",
-        "rightLabel": "Any Searchable Field"
+        "label": "Search Field"
       },
       "EventFilterQueryField": {
-        "help": "The value in this field will be used to search the field below.",
-        "label": "Search Criteria Field",
-        "rightLabel": "Text Result Field"
+        "help": "The field to store the search query in.",
+        "label": "Query Field",
+        "rightLabel": "Text Field"
       }
     }
   },
