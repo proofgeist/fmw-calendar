@@ -47,7 +47,7 @@ export default function Calendar({ Config, webDirectRefresh }) {
       calendarDate: calendar.getDate()
     };
 
-    if (window.onWebdInternalRefresh) {
+    if (webDirectRefresh === true) {
       // this will only run on WebD
       window.sessionStorage.setItem(
         "fccalendar.cache",
