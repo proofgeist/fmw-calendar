@@ -42,3 +42,7 @@ th.fc-day-header {
 td.fc-axis {
   color: #0091ce;
 }
+
+.tippy-popper[x-out-of-boundaries] {
+  visibility: hidden !important;
+}
